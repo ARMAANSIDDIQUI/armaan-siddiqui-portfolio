@@ -88,7 +88,7 @@ export default function Home() {
 
           {/* Typing Animated Text */}
           <p className="typing-effect">
-            Full Stack Developer | ML Enthusiast | Tech Explorer
+            Full Stack Developer | ML & DS Enthusiast | Tech Explorer
           </p>
 
           {/* Profession Tags */}
