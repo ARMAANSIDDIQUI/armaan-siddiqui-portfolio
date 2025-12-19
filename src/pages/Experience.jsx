@@ -4,12 +4,12 @@ import { Briefcase, Calendar, MapPin, Rocket } from "lucide-react";
 
 const EXPERIENCES = [
   {
-    role: "Software Engineer Intern (Leading to Full-Time)",
+    role: "Software Engineer Intern ",
     company: "Gozoom Technologies",
     date: "July 2025 - Present",
     location: "New Delhi",
     desc: [
-      "Commenced Internship on July 1, 2025. Position transitions into a full-time Software Engineer role starting July 1, 2026.",
+      "Commenced Internship on July 1, 2025. ",
       "Focused on learning and development, task execution, and problem-solving.",
       "Fostering innovation and creativity within the development team.",
       "Full-stack development, UI components, and API integrations."

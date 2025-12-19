@@ -169,8 +169,8 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>Software Engineer Intern (Leading to Full-Time)</strong> — Gozoom Technologies (July 2025 - Present) <br />
-              <span style={{ color: "#aaa" }}>Full-stack development, UI components, API integrations. Transitioning to Full-Time July 2026.</span>
+              <strong>Software Engineer Intern </strong> — Gozoom Technologies (July 2025 - Present) <br />
+              <span style={{ color: "#aaa" }}>Full-stack development, UI components, API integrations.</span>
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>Summer Internship Trainee</strong> — Softpro India Computer Technologies (July 2025 - Aug 2025) <br />
