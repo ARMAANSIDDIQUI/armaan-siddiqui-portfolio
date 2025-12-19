@@ -90,3 +90,71 @@
   color: #0ff;
   font-weight: 500;
 }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-links {
+    gap: 20px;
+    margin-bottom: 1.8rem;
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+
+  .contact-form {
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .contact-btn {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 1rem 0.8rem 2rem;
+  }
+
+  .contact-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-links {
+    gap: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+  }
+}

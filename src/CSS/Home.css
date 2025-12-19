@@ -67,3 +67,95 @@
   gap: 1.5rem;
   justify-content: center; /* ensures icons are centered */
 }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .home-section {
+    padding: 2rem 1rem 0.5rem;
+  }
+
+  .home-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-info {
+    min-width: unset;
+    padding: 0 1rem;
+    align-items: center;
+  }
+
+  .home-title {
+    font-size: 2.2rem;
+  }
+
+  .typing-effect {
+    font-size: 1rem;
+    white-space: normal; /* Allow text to wrap on smaller screens */
+    border-right: none; /* Remove typing cursor effect on wrap */
+    max-width: 100%;
+  }
+
+  .photo-container {
+    flex: unset;
+    margin-bottom: 2rem;
+  }
+
+  .photo-ring {
+    width: 256px;
+    height: 256px;
+  }
+
+  .photo-frame {
+    width: 250px;
+    height: 250px;
+  }
+
+  .profession-tags {
+    justify-content: center;
+  }
+
+  .info-cards {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .info-card {
+    min-width: 150px;
+    padding: 10px 15px;
+  }
+
+  .quick-links-list {
+    gap: 1rem;
+  }
+
+  .quick-link-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .typing-effect {
+    font-size: 0.9rem;
+  }
+
+  .photo-ring {
+    width: 206px;
+    height: 206px;
+  }
+
+  .photo-frame {
+    width: 200px;
+    height: 200px;
+  }
+
+  .quick-link-img {
+    width: 35px;
+    height: 35px;
+  }
+}

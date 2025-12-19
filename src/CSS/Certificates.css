@@ -30,6 +30,8 @@
   display: flex;
   gap: 10px;
   margin-top: 16px;
+  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+  justify-content: center; /* Center tabs when wrapped */
 }
 
 .tab {
@@ -128,4 +130,107 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #777; /* Lighter thumb on hover */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .certs-section {
+    padding: 30px 0;
+  }
+
+  .certs-card {
+    padding: 18px;
+  }
+
+  .certs-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .certs-card .lead {
+    font-size: 0.9rem;
+  }
+
+  .certs-tabs {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .tab {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
+
+  .certs-grid {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .cert.card img {
+    height: 120px;
+  }
+
+  .cert.card strong {
+    font-size: 14px;
+  }
+
+  .cert.card .muted {
+    font-size: 12px;
+  }
+
+  .cert.card .btn {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+
+  .modal img {
+    max-width: 95%;
+    max-height: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .certs-section {
+    padding: 20px 0;
+  }
+
+  .certs-card {
+    padding: 15px;
+  }
+
+  .certs-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .certs-card .lead {
+    font-size: 0.8rem;
+  }
+
+  .certs-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab {
+    width: 80%;
+    max-width: 200px;
+    font-size: 0.85rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr; /* Stack cards on very small screens */
+    gap: 10px;
+  }
+
+  .cert.card img {
+    height: 100px;
+  }
+
+  .cert.card strong {
+    font-size: 13px;
+  }
+
+  .cert.card .muted {
+    font-size: 11px;
+  }
 }
