@@ -257,27 +257,6 @@ const ProjectCard = ({ p }) => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, marginTop: 'auto' }}>
-          <motion.a
-            href={p.code}
-            target="_blank"
-            rel="noreferrer"
-            className="btn"
-            whileHover={{ scale: 1.08 }}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              background: 'rgba(255,255,255,0.05)',
-              color: '#0ea5e9',
-              padding: '8px 16px',
-              borderRadius: 8,
-              fontSize: 14,
-              border: '1px solid rgba(0,255,255,0.1)',
-              textDecoration: 'none'
-            }}
-          >
-            <Github size={16} /> Code
-          </motion.a>
           {p.live && (
             <motion.a
               href={p.live}
