@@ -45,6 +45,13 @@ const REAL_WORLD_PROJECTS = [
 const FULL_STACK_PROJECTS = [
   // Tier 1: Major Full Stack / Complex Logic
   {
+    title: 'Freelance Portfolio',
+    desc: 'My personal freelance portfolio showcasing various client projects and commercial work.',
+    tech: ['React', 'Tailwind', 'Framer Motion'],
+    live: 'https://armaansiddiqui.honestprinters.in',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
     title: 'CODE++',
     desc: 'DSA programming platform with Judge0 API, real-time social mechanics, and global leaderboards.',
     tech: ['MERN', 'Tailwind', 'ShadcnUI', 'Judge0 API'],
