@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import MeteorBackground from './components/MeteorBackground'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Certificates from './pages/Certificates'
@@ -11,6 +12,8 @@ import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import SkillNetwork from './pages/Skills'
 import ScrollToTopButton from './components/ScrollToTopButton';
+
+import ThemePreview from './pages/ThemePreview'
 
 // New ScrollToTop component
 function ScrollToTop() {
@@ -26,9 +29,10 @@ function ScrollToTop() {
 export default function App() {
   return (
     <div className="app">
+      <MeteorBackground />
       <ScrollToTop />
       <Navbar />
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, position: 'relative', zIndex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
@@ -38,10 +42,11 @@ export default function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/about" element={<About />} /> {/* ✅ fixed lowercase */}
           <Route path="/contact" element={<Contact />} />
+          <Route path="/theme-preview" element={<ThemePreview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <footer className="footer">
+      <footer className="footer" style={{ position: 'relative', zIndex: 1 }}>
         © {new Date().getFullYear()} Armaan Siddiqui — Built with React
       </footer>
       <ScrollToTopButton />

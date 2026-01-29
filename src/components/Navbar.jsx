@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoMenu, IoClose } from "react-icons/io5";
 
 const links = [
   { label: "Home", to: "/" },
@@ -34,8 +35,10 @@ export default function Navbar() {
   return (
     <>
       {/* --- Navbar --- */}
+      {/* --- Navbar --- */}
       <nav
         ref={navRef}
+        className="glass-panel"
         style={{
           position: "sticky",
           top: 0,
@@ -44,10 +47,12 @@ export default function Navbar() {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "1rem 2rem",
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
-          background: "rgba(0,0,0,0.6)",
-          backdropFilter: "blur(10px)",
+          background: "rgba(2, 6, 23, 0.5)", // Darker semi-transparent base
+          borderBottom: "1px solid var(--glass-border)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           fontFamily: "inherit",
+          transition: "all 0.3s ease"
         }}
       >
         {/* Logo */}
@@ -58,16 +63,24 @@ export default function Navbar() {
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200 }}
             style={{
-              fontWeight: "bold",
-              fontSize: "1.4rem",
-              color: "var(--accent)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "12px",
+              background: "linear-gradient(135deg, var(--primary), var(--secondary))",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: "900",
+              fontSize: "1.2rem",
+              color: "white",
+              boxShadow: "0 0 15px rgba(0, 119, 255, 0.4)"
             }}
           >
             AS
           </motion.div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 style={{ margin: 0, fontSize: 14 }}>Armaan Siddiqui</h1>
-            <div style={{ fontSize: 12, color: "var(--muted)" }}>
+            <h1 className="text-gradient" style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Armaan Siddiqui</h1>
+            <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
               Full Stack • ML • DS
             </div>
           </div>
@@ -87,49 +100,46 @@ export default function Navbar() {
           {links.map((l) => (
             <NavLink
               key={l.to}
-              to={l.to}
               end
-              style={{
+              to={l.to}
+              style={({ isActive }) => ({
                 position: "relative",
                 fontSize: "0.95rem",
                 textDecoration: "none",
-                color: "white",
-                fontWeight: 500,
-              }}
+                color: isActive ? "var(--text-main)" : "var(--text-muted)", // Fixed color logic
+                fontWeight: isActive ? 600 : 500,
+                transition: "color 0.2s ease"
+              })}
             >
               {({ isActive }) => (
                 <motion.div
                   whileHover={{
-                    scale: 1.1,
-                    color: "var(--accent)",
-                    textShadow: "0 0 8px var(--accent)",
+                    scale: 1.05,
+                    color: "var(--primary)",
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.2 }}
                   style={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                   }}
                 >
-                  <motion.span
-                    animate={{ color: isActive ? "var(--accent)" : "white" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {l.label}
-                  </motion.span>
+                  <span style={{ position: 'relative', zIndex: 1 }}>{l.label}</span>
+
                   {isActive && (
                     <motion.div
                       layoutId="underline"
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, width: 0 }}
+                      animate={{ opacity: 1, width: "100%" }}
                       transition={{ duration: 0.3 }}
                       style={{
-                        width: "70%",
+                        position: "absolute",
+                        bottom: "-4px",
+                        left: 0,
                         height: "2px",
-                        marginTop: "4px",
                         borderRadius: "1px",
-                        backgroundColor: "var(--accent)",
-                        boxShadow: "0 0 6px var(--accent)",
+                        background: "linear-gradient(90deg, var(--primary), var(--secondary))",
+                        boxShadow: "0 0 8px var(--primary)",
                       }}
                     />
                   )}
@@ -144,16 +154,22 @@ export default function Navbar() {
           <div className="mobile-btn">
             <button
               style={{
-                background: "none",
-                border: "none",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid var(--glass-border)",
+                borderRadius: "8px",
+                padding: "8px 12px",
                 color: "#fff",
-                fontSize: "1.8rem",
+                fontSize: "1.2rem",
                 cursor: "pointer",
                 zIndex: 10000,
+                transition: "background 0.2s",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? "✕" : "☰"}
+              {isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
             </button>
           </div>
         )}
@@ -192,10 +208,13 @@ export default function Navbar() {
                 background: "none",
                 border: "none",
                 cursor: "pointer",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
               onClick={() => setIsOpen(false)}
             >
-              ✕
+              <IoClose size={28} />
             </button>
 
             {links.map((l) => (

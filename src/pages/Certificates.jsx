@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, Trophy, Scroll, Code, Star, Briefcase, Mic, FileText, CheckCircle } from "lucide-react";
+import { IoClose } from "react-icons/io5";
 
 // NPTEL Course Card Component (Technical & Soft Skills)
 const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
@@ -12,12 +13,11 @@ const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.05 }}
-      style={{ 
-        background: "#1a1a1a", 
-        padding: 15, 
-        borderRadius: 8, 
-        borderLeft: `3px solid ${borderColor}`, 
-        cursor: "pointer", 
+            style={{ 
+              background: "rgba(255, 255, 255, 0.03)", 
+              padding: 15, 
+              borderRadius: 8, 
+              borderLeft: `3px solid ${borderColor}`,          cursor: "pointer", 
         display: "flex", 
         flexDirection: "column", 
         gap: 10, 
@@ -53,7 +53,7 @@ const TechnicalCertCard = React.memo(({ cert, openModal }) => (
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.3 }}
     style={{
-      background: "#1a1a1a",
+      background: "rgba(255, 255, 255, 0.03)",
       borderRadius: 12,
       padding: 16,
       border: "1px solid #333",
@@ -435,7 +435,7 @@ export default function Certificates() {
 
 
 
-          <div className="card" style={{ background: "#111", borderRadius: 16, padding: "30px 24px" }}>
+          <div className="card" style={{ background: "rgba(255, 255, 255, 0.02)", borderRadius: 16, padding: "30px 24px" }}>
 
         
 
@@ -961,11 +961,11 @@ export default function Certificates() {
 
                   onClick={() => setSelectedCert(null)}
 
-                  style={{ background: "none", border: "none", color: "#aaa", fontSize: "1.5rem", cursor: "pointer" }}
+                  style={{ background: "none", border: "none", color: "#aaa", fontSize: "1.5rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
 
                 >
 
-                  ✕
+                  <IoClose size={24} />
 
                 </button>
 

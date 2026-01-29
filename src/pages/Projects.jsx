@@ -1,8 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, Code, Rocket, Layers, Cpu, Globe } from 'lucide-react'
-
-// Projects reordered by Category and "Worth"
+import GlassCard from '../components/ui/GlassCard'
 
 const REAL_WORLD_PROJECTS = [
   {
@@ -43,7 +42,6 @@ const REAL_WORLD_PROJECTS = [
 ]
 
 const FULL_STACK_PROJECTS = [
-  // Tier 1: Major Full Stack / Complex Logic
   {
     title: 'Freelance Portfolio',
     desc: 'My personal freelance portfolio showcasing various client projects and commercial work.',
@@ -145,7 +143,6 @@ const FULL_STACK_PROJECTS = [
 ]
 
 const ML_DS_PROJECTS = [
-  // Tier 1: Deep Learning / Research / High Complexity
   {
     title: 'RADMIC',
     desc: 'Radar-based Drone-Bird Classification using Micro-Doppler Signatures and CNN.',
@@ -167,8 +164,6 @@ const ML_DS_PROJECTS = [
     live: '',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
-  
-  // Tier 2: Classification / Analysis Tools
   {
     title: 'DistrictSelector',
     desc: 'Classification system to identify suitable districts for crops based on agro-climatic profiles.',
@@ -187,54 +182,43 @@ const ML_DS_PROJECTS = [
 
 const ProjectCard = ({ p }) => {
   return (
-    <motion.div
-      className="project-card"
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ scale: 1.02 }}
-      viewport={{ once: true }}
+    <GlassCard
       style={{
-        background: 'linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.9))',
-        border: '1px solid rgba(0,255,255,0.1)',
-        borderRadius: 16,
-        padding: 24, // Increased padding
-        overflow: 'hidden',
-        boxShadow: '0 0 20px rgba(0,255,255,0.08)',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
-        minHeight: '480px' // Increased height from 480px
+        padding: '24px',
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))'
       }}
     >
-      {/* Interactive Preview (iFrame) or Placeholder */}
-      <div style={{ 
-        width: '100%', 
-        height: '260px', // Increased height from 350px
-        borderRadius: 12, 
-        overflow: 'hidden', 
+      {/* Visual Preview */}
+      <div style={{
+        width: '100%',
+        height: '240px',
+        borderRadius: 12,
+        overflow: 'hidden',
         marginBottom: 20,
-        background: '#000',
+        background: 'rgba(0, 0, 0, 0.3)', // Dark background behind iframe
         position: 'relative',
-        border: '1px solid rgba(255,255,255,0.1)'
+        border: '1px solid rgba(255,255,255,0.05)'
       }}>
         {p.live ? (
           <iframe
             src={p.live}
             title={p.title}
-            style={{ width: '100%', height: '100%', border: 'none' }}
+            style={{ width: '100%', height: '100%', border: 'none', filter: 'grayscale(0.2) contrast(1.1)' }}
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           />
         ) : (
-          <div style={{ 
-            width: '100%', 
-            height: '100%', 
-            display: 'flex', 
-            alignItems: 'center', 
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(45deg, #111, #222)',
-            color: '#444'
+            background: 'linear-gradient(45deg, rgba(6,182,212,0.1), rgba(0,0,0,0.4))',
+            color: 'var(--primary)'
           }}>
             <Code size={48} />
           </div>
@@ -242,20 +226,21 @@ const ProjectCard = ({ p }) => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        <h3 style={{ fontSize: 22, color: '#0ea5e9', marginBottom: 8 }}>{p.title}</h3>
-        <p style={{ fontSize: 16, color: '#bbb', marginBottom: 16, lineHeight: 1.6, flexGrow: 1 }}>{p.desc}</p>
+        <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>{p.title}</h3>
+        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.6, flexGrow: 1 }}>{p.desc}</p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
           {p.tech.map((t) => (
             <span
               key={t}
               style={{
-                background: 'rgba(0,255,255,0.05)',
-                border: '1px solid rgba(0,255,255,0.1)',
+                background: 'rgba(0,119,255,0.1)',
+                border: '1px solid rgba(0,119,255,0.2)',
                 padding: '4px 10px',
-                borderRadius: 6,
-                fontSize: 13,
-                color: '#aaf'
+                borderRadius: '6px',
+                fontSize: '0.8rem',
+                color: 'var(--highlight)',
+                fontWeight: 500
               }}
             >
               {t}
@@ -269,81 +254,113 @@ const ProjectCard = ({ p }) => {
               href={p.live}
               target="_blank"
               rel="noreferrer"
-              className="btn"
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                background: 'linear-gradient(90deg, #06b6d4, #0891b2)',
+                background: 'linear-gradient(90deg, var(--primary), var(--secondary))',
                 color: '#fff',
-                padding: '8px 16px',
-                borderRadius: 8,
-                fontSize: 14,
-                textDecoration: 'none'
+                padding: '10px 18px',
+                borderRadius: '8px',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(0,119,255,0.3)'
               }}
             >
-              <ExternalLink size={16} /> Open
+              <ExternalLink size={16} /> Open Project
             </motion.a>
           )}
         </div>
       </div>
-    </motion.div>
+    </GlassCard>
   )
 }
 
 export default function Projects() {
   return (
-    <motion.section
-      className="container"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      id="projects"
-      style={{ paddingBottom: 60 }}
+    <section
+      style={{
+        maxWidth: '1300px',
+        margin: '0 auto',
+        padding: '40px 20px',
+        minHeight: '100vh'
+      }}
     >
-      <div className="card" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 30 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32 }}
-        >
-          <Rocket size={36} className="text-cyan-400" />
-          <h2 className="text-4xl font-semibold text-cyan-400 m-0">
-             Projects
-          </h2>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}
+      >
+        <div style={{ padding: '12px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)' }}>
+          <Rocket size={32} color="var(--primary)" />
+        </div>
+        <h1 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800, margin: 0 }}>
+          All Projects
+        </h1>
+      </motion.div>
 
-        {/* Real World / Live Projects Section */}
-        <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: 20, borderLeft: '4px solid #22c55e', paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Globe size={24} color="#22c55e" /> Real World & Client Projects
+      {/* Real World / Live Projects Section */}
+      <div style={{ marginBottom: '80px' }}>
+        <h3 style={{
+          color: 'var(--text-main)',
+          fontSize: '1.4rem',
+          marginBottom: 24,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12
+        }}>
+          <span style={{ width: '4px', height: '24px', background: '#22c55e', borderRadius: '2px' }}></span>
+          <Globe size={20} color="#22c55e" /> Real World & Client Projects
         </h3>
-        <div className="projects-grid" style={{ display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', marginBottom: 60 }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
           {REAL_WORLD_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
         </div>
+      </div>
 
-        {/* Full Stack Section */}
-        <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: 20, borderLeft: '4px solid #06b6d4', paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Layers size={24} color="#06b6d4" /> Full Stack Development
+      {/* Full Stack Section */}
+      <div style={{ marginBottom: '80px' }}>
+        <h3 style={{
+          color: 'var(--text-main)',
+          fontSize: '1.4rem',
+          marginBottom: 24,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12
+        }}>
+          <span style={{ width: '4px', height: '24px', background: 'var(--primary)', borderRadius: '2px' }}></span>
+          <Layers size={20} color="var(--primary)" /> Full Stack Development
         </h3>
-        <div className="projects-grid" style={{ display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', marginBottom: 60 }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
           {FULL_STACK_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
         </div>
+      </div>
 
-        {/* ML/DS Section */}
-        <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: 20, borderLeft: '4px solid #a855f7', paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Cpu size={24} color="#a855f7" /> Machine Learning & Data Science
+      {/* ML/DS Section */}
+      <div style={{ marginBottom: '40px' }}>
+        <h3 style={{
+          color: 'var(--text-main)',
+          fontSize: '1.4rem',
+          marginBottom: 24,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12
+        }}>
+          <span style={{ width: '4px', height: '24px', background: '#a855f7', borderRadius: '2px' }}></span>
+          <Cpu size={20} color="#a855f7" /> Machine Learning & Data Science
         </h3>
-        <div className="projects-grid" style={{ display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
           {ML_DS_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin, Rocket } from "lucide-react";
+import GlassCard from "../components/ui/GlassCard";
 
 const EXPERIENCES = [
   {
@@ -44,57 +45,58 @@ const EXPERIENCES = [
 
 export default function Experience() {
   return (
-    <section className="container" style={{ padding: "60px 0" }}>
-      <div className="card" style={{ background: "#111", borderRadius: 16, padding: "40px 20px" }}>
-        
+    <section className="container" style={{ padding: "60px 20px", maxWidth: "1000px", margin: "0 auto", minHeight: '100vh' }}>
+      <GlassCard style={{ padding: "40px 20px" }}>
+
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: 60 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 10 }}>
-            <Rocket size={32} className="text-cyan-400" />
-            <h2 style={{ fontSize: "2.5rem", color: "#fff", margin: 0 }}>
-                Professional Journey
+            <Rocket size={32} className="text-cyan-400" color="var(--primary)" />
+            <h2 className="text-gradient" style={{ fontSize: "2.5rem", fontWeight: 800, margin: 0 }}>
+              Professional Journey
             </h2>
           </div>
-          <p style={{ color: "#aaa", fontSize: "1.1rem" }}>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.1rem" }}>
             My timeline of internships, freelance work, and training.
           </p>
         </motion.div>
 
         {/* Timeline Container */}
-        <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto", paddingLeft: "20px" }}>
-          
+        <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto", paddingLeft: "10px" }}>
+
           {/* Vertical Line */}
-          <div 
-            style={{ 
-              position: "absolute", 
-              left: "29px", 
-              top: 0, 
-              bottom: 0, 
-              width: "2px", 
-              background: "linear-gradient(to bottom, #0ea5e9, #a855f7, #22c55e)",
+          <div
+            style={{
+              position: "absolute",
+              left: "29px",
+              top: 0,
+              bottom: 0,
+              width: "2px",
+              background: "linear-gradient(to bottom, var(--primary), var(--secondary), #22c55e)",
               opacity: 0.3
-            }} 
+            }}
           />
 
           {EXPERIENCES.map((exp, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.2, duration: 0.5 }}
-              style={{ 
-                position: "relative", 
-                marginBottom: 50, 
-                paddingLeft: "40px" 
+              style={{
+                position: "relative",
+                marginBottom: 50,
+                paddingLeft: "40px"
               }}
             >
               {/* Timeline Dot */}
-              <div 
+              <div
                 style={{
                   position: "absolute",
                   left: "0",
@@ -102,81 +104,74 @@ export default function Experience() {
                   width: "20px",
                   height: "20px",
                   borderRadius: "50%",
-                  background: exp.type === 'internship' ? '#0ea5e9' : exp.type === 'freelance' ? '#22c55e' : '#a855f7',
-                  border: "4px solid #111",
-                  boxShadow: `0 0 10px ${exp.type === 'internship' ? '#0ea5e9' : exp.type === 'freelance' ? '#22c55e' : '#a855f7'}`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  background: exp.type === 'internship' ? 'var(--primary)' : exp.type === 'freelance' ? '#22c55e' : 'var(--secondary)',
+                  border: "4px solid #020617",
+                  boxShadow: `0 0 10px ${exp.type === 'internship' ? 'var(--primary)' : exp.type === 'freelance' ? '#22c55e' : 'var(--secondary)'}`,
+                  zIndex: 2
                 }}
-              >
-                  {/* Optional: Tiny Icon inside dot */}
-              </div>
+              />
 
               {/* Content Card */}
-              <motion.div
+              <GlassCard
                 whileHover={{ scale: 1.02 }}
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 12,
                   padding: "24px",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))"
                 }}
               >
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 12 }}>
-                    <span 
-                    style={{ 
-                        display: "inline-flex",
-                        alignItems: 'center',
-                        gap: 6,
-                        padding: "4px 12px", 
-                        borderRadius: "20px", 
-                        fontSize: "0.8rem", 
-                        background: "rgba(255,255,255,0.05)",
-                        color: "#aaa",
-                        border: "1px solid rgba(255,255,255,0.1)"
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: 'center',
+                      gap: 6,
+                      padding: "4px 12px",
+                      borderRadius: "20px",
+                      fontSize: "0.8rem",
+                      background: "rgba(255,255,255,0.05)",
+                      color: "var(--text-muted)",
+                      border: "1px solid rgba(255,255,255,0.1)"
                     }}
-                    >
+                  >
                     <Calendar size={12} /> {exp.date}
-                    </span>
-                    <span 
-                    style={{ 
-                        display: "inline-flex",
-                        alignItems: 'center',
-                        gap: 6,
-                        padding: "4px 12px", 
-                        borderRadius: "20px", 
-                        fontSize: "0.8rem", 
-                        background: "rgba(255,255,255,0.05)",
-                        color: "#aaa",
-                        border: "1px solid rgba(255,255,255,0.1)"
+                  </span>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: 'center',
+                      gap: 6,
+                      padding: "4px 12px",
+                      borderRadius: "20px",
+                      fontSize: "0.8rem",
+                      background: "rgba(255,255,255,0.05)",
+                      color: "var(--text-muted)",
+                      border: "1px solid rgba(255,255,255,0.1)"
                     }}
-                    >
+                  >
                     <MapPin size={12} /> {exp.location}
-                    </span>
+                  </span>
                 </div>
 
-                <h3 style={{ color: "#fff", fontSize: "1.4rem", margin: "0 0 4px 0", display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Briefcase size={20} className="text-gray-400" /> {exp.role}
+                <h3 style={{ color: "var(--text-main)", fontSize: "1.4rem", margin: "0 0 4px 0", display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Briefcase size={20} className="text-gray-400" /> {exp.role}
                 </h3>
-                <h4 style={{ color: exp.type === 'internship' ? '#0ea5e9' : exp.type === 'freelance' ? '#22c55e' : '#a855f7', fontSize: "1.1rem", margin: "0 0 15px 0" }}>
+                <h4 style={{ color: exp.type === 'internship' ? 'var(--primary)' : exp.type === 'freelance' ? '#22c55e' : 'var(--secondary)', fontSize: "1.1rem", margin: "0 0 15px 0" }}>
                   {exp.company}
                 </h4>
 
-                <ul style={{ paddingLeft: "20px", color: "#ccc", lineHeight: "1.6" }}>
+                <ul style={{ paddingLeft: "20px", color: "var(--text-muted)", lineHeight: "1.6" }}>
                   {exp.desc.map((point, idx) => (
                     <li key={idx} style={{ marginBottom: "6px" }}>{point}</li>
                   ))}
                 </ul>
-              </motion.div>
+              </GlassCard>
 
             </motion.div>
           ))}
 
         </div>
 
-      </div>
+      </GlassCard>
     </section>
   );
 }

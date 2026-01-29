@@ -28,7 +28,7 @@ export default function Resume() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         style={{
-          background: "#0b0b0b",
+          background: "rgba(255, 255, 255, 0.02)",
           borderRadius: 16,
           padding: "40px 30px",
           color: "#e5e5e5",

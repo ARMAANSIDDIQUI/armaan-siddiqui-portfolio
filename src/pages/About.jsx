@@ -12,7 +12,6 @@ const AboutMe = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "radial-gradient(circle at top, #0d0d0d, #000)",
         color: "white",
         padding: "3rem 1rem",
       }}
