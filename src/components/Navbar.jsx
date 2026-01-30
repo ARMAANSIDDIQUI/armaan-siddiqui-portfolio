@@ -20,16 +20,20 @@ export default function Navbar() {
   const navRef = useRef(null);
   const linksRef = useRef(null);
 
-  // Check if links overflow nav width (to show hamburger)
-  const checkOverflow = () => {
-    if (!navRef.current || !linksRef.current) return;
-    setShowButton(linksRef.current.scrollWidth > navRef.current.offsetWidth);
+  // Use a standard breakpoint for mobile menu
+  const checkResponsive = () => {
+    if (window.innerWidth < 1024) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+      setIsOpen(false); // Ensure menu closes when switching to desktop
+    }
   };
 
   useEffect(() => {
-    checkOverflow();
-    window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+    return () => window.removeEventListener("resize", checkResponsive);
   }, []);
 
   return (

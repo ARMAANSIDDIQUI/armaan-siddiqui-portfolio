@@ -5,6 +5,13 @@ import GlassCard from '../components/ui/GlassCard'
 
 const REAL_WORLD_PROJECTS = [
   {
+    title: 'Honest Graphics & Printers',
+    desc: 'E-commerce platform with Google OAuth, safe payment gateway, dual theme (Light & Dark), and a lightweight 3D physics engine.',
+    tech: ['E-commerce', 'Google OAuth', 'Dual Theme', 'Lightweight 3D Engine', 'Security'],
+    live: 'https://honestprinters.in/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
     title: 'Adarsh Dham',
     desc: 'Full-stack ashram management portal with booking calendars and real-time tree-view.',
     tech: ['React', 'Node', 'AWS EC2', 'Elastic IP'],
@@ -315,7 +322,7 @@ export default function Projects() {
           <span style={{ width: '4px', height: '24px', background: '#22c55e', borderRadius: '2px' }}></span>
           <Globe size={20} color="#22c55e" /> Real World & Client Projects
         </h3>
-        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           {REAL_WORLD_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
@@ -335,7 +342,7 @@ export default function Projects() {
           <span style={{ width: '4px', height: '24px', background: 'var(--primary)', borderRadius: '2px' }}></span>
           <Layers size={20} color="var(--primary)" /> Full Stack Development
         </h3>
-        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           {FULL_STACK_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
@@ -355,7 +362,7 @@ export default function Projects() {
           <span style={{ width: '4px', height: '24px', background: '#a855f7', borderRadius: '2px' }}></span>
           <Cpu size={20} color="#a855f7" /> Machine Learning & Data Science
         </h3>
-        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           {ML_DS_PROJECTS.map((p, idx) => (
             <ProjectCard key={idx} p={p} />
           ))}
