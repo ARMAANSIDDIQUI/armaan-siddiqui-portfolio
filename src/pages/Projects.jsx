@@ -5,6 +5,13 @@ import GlassCard from '../components/ui/GlassCard'
 
 const REAL_WORLD_PROJECTS = [
   {
+    title: 'Safely Hands',
+    desc: "India's trusted care and staffing services. Technology-enabled platform for hiring domestic help, cooks, and elder care in Moradabad.",
+    tech: ['React', 'Node.js', 'Service Platform', 'Web Development'],
+    live: 'http://safelyhands.com/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
     title: 'Honest Graphics & Printers',
     desc: 'E-commerce platform with Google OAuth, safe payment gateway, dual theme (Light & Dark), and a lightweight 3D physics engine.',
     tech: ['E-commerce', 'Google OAuth', 'Dual Theme', 'Lightweight 3D Engine', 'Security'],
