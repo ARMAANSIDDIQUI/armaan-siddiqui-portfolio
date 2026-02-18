@@ -6,10 +6,10 @@ import GlassCard from '../components/ui/GlassCard'
 const REAL_WORLD_PROJECTS = [
   {
     title: 'Safely Hands',
-    desc: "India's trusted care and staffing services. Technology-enabled platform for hiring domestic help, cooks, and elder care in Moradabad.",
-    tech: ['React', 'Node.js', 'Service Platform', 'Web Development'],
-    live: 'http://safelyhands.com/',
-    code: 'https://github.com/ARMAANSIDDIQUI'
+    desc: 'A technology-enabled platform connecting users with trusted, background-verified domestic help and care professionals. Features include rigorous staff verification and transparent pricing.',
+    tech: ['React', 'Node.js', 'Web Platform', 'Service Aggregator'],
+    live: 'https://safelyhands.com/',
+    code: '#'
   },
   {
     title: 'Honest Graphics & Printers',
