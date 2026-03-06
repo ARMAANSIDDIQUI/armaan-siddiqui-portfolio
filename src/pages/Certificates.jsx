@@ -13,33 +13,33 @@ const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.05 }}
-            style={{ 
-              background: "rgba(255, 255, 255, 0.03)", 
-              padding: 15, 
-              borderRadius: 8, 
-              borderLeft: `3px solid ${borderColor}`,          cursor: "pointer", 
-        display: "flex", 
-        flexDirection: "column", 
-        gap: 10, 
-        minHeight: 280 
+      style={{
+        background: "rgba(255, 255, 255, 0.03)",
+        padding: 15,
+        borderRadius: 8,
+        borderLeft: `3px solid ${borderColor}`, cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        gap: 10,
+        minHeight: 280
       }}
       onClick={() => openModal(cert)}
       whileHover={{ scale: 1.02, background: "#222" }}
     >
       {/* Mini Preview */}
       <div style={{ height: "160px", width: "100%", borderRadius: "6px", overflow: "hidden", background: "#000" }}>
-        <img 
-            src={cert.img} 
-            alt={cert.title} 
-            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
-            onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=NPTEL"; }}
+        <img
+          src={cert.img}
+          alt={cert.title}
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
+          onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=NPTEL"; }}
         />
       </div>
       <div>
         <h5 style={{ color: "#fff", margin: "0 0 5px 0" }}>{cert.title}</h5>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem" }}>
-            <span style={{ color: scoreColor }}>{cert.score}</span>
-            <span style={{ color: "#666" }}>{cert.date}</span>
+          <span style={{ color: scoreColor }}>{cert.score}</span>
+          <span style={{ color: "#666" }}>{cert.date}</span>
         </div>
       </div>
     </motion.div>
@@ -68,10 +68,10 @@ const TechnicalCertCard = React.memo(({ cert, openModal }) => (
   >
     {/* Image Preview */}
     <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img 
-        src={cert.img} 
-        alt={cert.title} 
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+      <img
+        src={cert.img}
+        alt={cert.title}
+        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
         onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Tech+Cert"; }}
       />
     </div>
@@ -107,10 +107,10 @@ const NPTELAchievementCard = React.memo(({ achievement, openModal }) => (
   >
     {/* Image Preview */}
     <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img 
-        src={achievement.img} 
-        alt={achievement.title} 
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+      <img
+        src={achievement.img}
+        alt={achievement.title}
+        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
         onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=NPTEL+Achievement"; }}
       />
     </div>
@@ -150,10 +150,10 @@ const LeadershipInternshipCard = React.memo(({ item, type, openModal }) => (
   >
     {/* Image Preview */}
     <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img 
-        src={item.img} 
-        alt={item.role} 
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+      <img
+        src={item.img}
+        alt={item.role}
+        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
         onError={(e) => { e.target.src = `https://placehold.co/600x400/222/FFF?text=${type}`; }}
       />
     </div>
@@ -192,19 +192,27 @@ const CompetitiveExamCard = React.memo(({ exam, openModal }) => (
     <div className="custom-scrollbar" style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000", position: "relative", display: "flex", overflowX: "auto", scrollSnapType: "x mandatory" }}>
       {exam.imgs ? (
         exam.imgs.map((imgSrc, idx) => (
-          <img 
+          <img
             key={idx}
-            src={imgSrc} 
-            alt={`${exam.title} ${idx + 1}`} 
-            style={{ width: "33.33%", height: "100%", objectFit: "contain", opacity: 0.9, scrollSnapAlign: "start" }} 
+            src={imgSrc}
+            alt={`${exam.title} ${idx + 1}`}
+            style={{ width: "33.33%", height: "100%", objectFit: "contain", opacity: 0.9, scrollSnapAlign: "start" }}
             onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Image+Not+Found"; }}
           />
         ))
+      ) : exam.pdf ? (
+        <iframe
+          src={`${exam.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+          title={`${exam.title} Preview`}
+          width="100%"
+          height="160px"
+          style={{ border: "none", overflow: "hidden", pointerEvents: "none" }}
+        />
       ) : (
-        <img 
-          src={exam.img} 
-          alt={exam.title} 
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+        <img
+          src={exam.img}
+          alt={exam.title}
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
           onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=GATE+2025"; }}
         />
       )}
@@ -246,10 +254,10 @@ const CompetitionCard = React.memo(({ comp, openModal }) => (
   >
     {/* Image Preview */}
     <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img 
-        src={comp.img} 
-        alt={comp.title} 
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+      <img
+        src={comp.img}
+        alt={comp.title}
+        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
         onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Certificate"; }}
       />
     </div>
@@ -273,7 +281,23 @@ const COMPETITIVE_EXAMS = [
     desc: "Paper: Data Science & AI (DA). Secured 35/100 (Score: 420). AIR: 4358.",
     date: "2025",
     icon: <CheckCircle size={28} className="text-red-400" />,
-    imgs: ["/certs/gate1.jpg", "/certs/gate2.jpeg", "/certs/gate3.jpeg"] 
+    imgs: ["/certs/gate1.jpg", "/certs/gate2.jpeg", "/certs/gate3.jpeg"]
+  },
+  {
+    title: "TCS iON NQT - IT",
+    desc: "Foundation Section: 85.96% | Advanced Section: 76.19% | Programming (C): 94.02%. Total Marks: 2568.48/3000 (85.62%).",
+    date: "Jan 2026",
+    icon: <CheckCircle size={28} className="text-blue-400" />,
+    pdf: "/IT.pdf",
+    img: "https://placehold.co/600x400/1e40af/FFF?text=TCS+NQT+IT"
+  },
+  {
+    title: "TCS iON NQT - Psychometric",
+    desc: "Personality Traits: Thoroughness (75%), Sociableness (75%). Motivation Traits: Accomplishment (91.67%), Authority (88.33%).",
+    date: "Jan 2026",
+    icon: <CheckCircle size={28} className="text-purple-400" />,
+    pdf: "/psychometric.pdf",
+    img: "https://placehold.co/600x400/6b21a8/FFF?text=TCS+NQT+Psychometric"
   }
 ];
 
@@ -423,133 +447,73 @@ export default function Certificates() {
 
 
 
-    return (
+  return (
 
 
 
-      <div className="certificates-wrapper"> {/* Using a div instead of fragment */}
+    <div className="certificates-wrapper"> {/* Using a div instead of fragment */}
 
 
 
-        <section className="container" style={{ padding: "40px 0" }}>
+      <section className="container" style={{ padding: "40px 0" }}>
 
 
 
-          <div className="card" style={{ background: "rgba(255, 255, 255, 0.02)", borderRadius: 16, padding: "30px 24px" }}>
+        <div className="card" style={{ background: "rgba(255, 255, 255, 0.02)", borderRadius: 16, padding: "30px 24px" }}>
 
-        
 
-        {/* HEADER */}
 
-        <motion.div 
+          {/* HEADER */}
 
-          initial={{ opacity: 0, y: -10 }}
+          <motion.div
 
-          animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -10 }}
 
-          transition={{ duration: 0.5 }}
+            animate={{ opacity: 1, y: 0 }}
 
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
+            transition={{ duration: 0.5 }}
 
-        >
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+          >
 
-             <Award size={32} color="#fbbf24" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
 
-             <h2 style={{ fontSize: "2.2rem", color: "#fff", margin: 0 }}>
+              <Award size={32} color="#fbbf24" />
 
-               Achievements & Certifications
+              <h2 style={{ fontSize: "2.2rem", color: "#fff", margin: 0 }}>
 
-             </h2>
+                Achievements & Certifications
 
-          </div>
+              </h2>
 
-          <p style={{ color: "#aaa", fontSize: "1.1rem" }}>
+            </div>
 
-            A track record of competitions, technical mastery, and leadership.
+            <p style={{ color: "#aaa", fontSize: "1.1rem" }}>
 
-          </p>
+              A track record of competitions, technical mastery, and leadership.
 
-        </motion.div>
+            </p>
 
+          </motion.div>
 
 
-        {/* 1. COMPETITIVE EXAMS */}
 
-        <div style={{ marginTop: 50 }}>
+          {/* 1. COMPETITIVE EXAMS */}
 
-          <h3 style={{ color: "#f87171", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #f87171", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ marginTop: 50 }}>
 
-            <CheckCircle size={24} /> Competitive Exams
+            <h3 style={{ color: "#f87171", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #f87171", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
 
-          </h3>
+              <CheckCircle size={24} /> Competitive Exams
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
-
-            {COMPETITIVE_EXAMS.map((exam, i) => (
-
-              <CompetitiveExamCard key={i} exam={exam} openModal={openModal} />
-
-            ))}
-
-          </div>
-
-        </div>
-
-
-
-        {/* 2. COMPETITIONS & HACKATHONS */}
-
-        <div style={{ marginTop: 50 }}>
-
-          <h3 style={{ color: "#22c55e", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #22c55e", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-
-            <Trophy size={24} /> Competitions & Hackathons
-
-          </h3>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
-
-            {COMPETITIONS.map((comp, i) => (
-
-              <CompetitionCard key={i} comp={comp} openModal={openModal} />
-
-            ))}
-
-          </div>
-
-        </div>
-
-
-
-        {/* 3. LEADERSHIP & INTERNSHIPS */}
-
-        <div style={{ marginTop: 50 }}>
-
-          <h3 style={{ color: "#eab308", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #eab308", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-
-            <Briefcase size={24} /> Leadership & Internships
-
-          </h3>
-
-
-
-          {/* Leadership Section */}
-
-          <div style={{ marginBottom: 30 }}>
-
-            <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
-
-              Leadership Roles
-
-            </h4>
+            </h3>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
 
-              {LEADERSHIP.map((item, i) => (
+              {COMPETITIVE_EXAMS.map((exam, i) => (
 
-                <LeadershipInternshipCard key={i} item={item} type="Leadership" openModal={openModal} />
+                <CompetitiveExamCard key={i} exam={exam} openModal={openModal} />
 
               ))}
 
@@ -559,21 +523,21 @@ export default function Certificates() {
 
 
 
-          {/* Internships Section */}
+          {/* 2. COMPETITIONS & HACKATHONS */}
 
-          <div>
+          <div style={{ marginTop: 50 }}>
 
-            <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+            <h3 style={{ color: "#22c55e", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #22c55e", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
 
-              Internships
+              <Trophy size={24} /> Competitions & Hackathons
 
-            </h4>
+            </h3>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
 
-              {INTERNSHIPS.map((item, i) => (
+              {COMPETITIONS.map((comp, i) => (
 
-                <LeadershipInternshipCard key={i} item={item} type="Internship" openModal={openModal} />
+                <CompetitionCard key={i} comp={comp} openModal={openModal} />
 
               ))}
 
@@ -581,115 +545,175 @@ export default function Certificates() {
 
           </div>
 
-        </div>
+
+
+          {/* 3. LEADERSHIP & INTERNSHIPS */}
+
+          <div style={{ marginTop: 50 }}>
+
+            <h3 style={{ color: "#eab308", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #eab308", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+
+              <Briefcase size={24} /> Leadership & Internships
+
+            </h3>
 
 
 
-        {/* 4. NPTEL ACHIEVEMENTS */}
+            {/* Leadership Section */}
 
-        <div style={{ marginTop: 50 }}>
+            <div style={{ marginBottom: 30 }}>
 
-          <h3 style={{ color: "#f97316", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #f97316", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
 
-            <Star size={24} /> NPTEL Achievements
+                Leadership Roles
 
-          </h3>
+              </h4>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
 
-            {NPTEL_ACHIEVEMENTS.map((achievement, i) => (
+                {LEADERSHIP.map((item, i) => (
 
-              <NPTELAchievementCard key={i} achievement={achievement} openModal={openModal} />
+                  <LeadershipInternshipCard key={i} item={item} type="Leadership" openModal={openModal} />
 
-            ))}
+                ))}
 
-          </div>
+              </div>
 
-        </div>
-
-
-
-        {/* 5. CERTIFICATIONS TAB SECTION */}
-
-        <div style={{ marginTop: 60 }}>
-
-          <h3 style={{ color: "#0ea5e9", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #0ea5e9", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-
-            <FileText size={24} /> Certifications
-
-          </h3>
-
-          
-
-          {/* Tabs */}
-
-          <div style={{ display: "flex", gap: 15, marginBottom: 25 }}>
-
-            <button 
-
-              onClick={() => setTab("technical")}
-
-              style={{
-
-                padding: "8px 20px",
-
-                borderRadius: 20,
-
-                border: "none",
-
-                background: tab === "technical" ? "#0ea5e9" : "#333",
-
-                color: "#fff",
-
-                cursor: "pointer",
-
-                fontWeight: "bold"
-
-              }}
-
-            >
-
-              Technical
-
-            </button>
-
-            <button 
-
-               onClick={() => setTab("nptel")}
-
-               style={{
-
-                padding: "8px 20px",
-
-                borderRadius: 20,
-
-                border: "none",
-
-                background: tab === "nptel" ? "#0ea5e9" : "#333",
-
-                color: "#fff",
-
-                cursor: "pointer",
-
-                fontWeight: "bold"
-
-              }}
-
-            >
-
-              NPTEL (Online)
-
-            </button>
-
-          </div>
+            </div>
 
 
 
-          {/* Technical Tab Content */}
-
-          {tab === "technical" && (
+            {/* Internships Section */}
 
             <div>
+
+              <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+
+                Internships
+
+              </h4>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
+
+                {INTERNSHIPS.map((item, i) => (
+
+                  <LeadershipInternshipCard key={i} item={item} type="Internship" openModal={openModal} />
+
+                ))}
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          {/* 4. NPTEL ACHIEVEMENTS */}
+
+          <div style={{ marginTop: 50 }}>
+
+            <h3 style={{ color: "#f97316", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #f97316", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+
+              <Star size={24} /> NPTEL Achievements
+
+            </h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
+
+              {NPTEL_ACHIEVEMENTS.map((achievement, i) => (
+
+                <NPTELAchievementCard key={i} achievement={achievement} openModal={openModal} />
+
+              ))}
+
+            </div>
+
+          </div>
+
+
+
+          {/* 5. CERTIFICATIONS TAB SECTION */}
+
+          <div style={{ marginTop: 60 }}>
+
+            <h3 style={{ color: "#0ea5e9", fontSize: "1.5rem", marginBottom: 20, borderLeft: "4px solid #0ea5e9", paddingLeft: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+
+              <FileText size={24} /> Certifications
+
+            </h3>
+
+
+
+            {/* Tabs */}
+
+            <div style={{ display: "flex", gap: 15, marginBottom: 25 }}>
+
+              <button
+
+                onClick={() => setTab("technical")}
+
+                style={{
+
+                  padding: "8px 20px",
+
+                  borderRadius: 20,
+
+                  border: "none",
+
+                  background: tab === "technical" ? "#0ea5e9" : "#333",
+
+                  color: "#fff",
+
+                  cursor: "pointer",
+
+                  fontWeight: "bold"
+
+                }}
+
+              >
+
+                Technical
+
+              </button>
+
+              <button
+
+                onClick={() => setTab("nptel")}
+
+                style={{
+
+                  padding: "8px 20px",
+
+                  borderRadius: 20,
+
+                  border: "none",
+
+                  background: tab === "nptel" ? "#0ea5e9" : "#333",
+
+                  color: "#fff",
+
+                  cursor: "pointer",
+
+                  fontWeight: "bold"
+
+                }}
+
+              >
+
+                NPTEL (Online)
+
+              </button>
+
+            </div>
+
+
+
+            {/* Technical Tab Content */}
+
+            {tab === "technical" && (
+
+              <div>
 
                 <div className="certs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
 
@@ -701,75 +725,79 @@ export default function Certificates() {
 
                 </div>
 
-            </div>
+              </div>
 
-          )}
-
-
-
-          {/* NPTEL Tab Content */}
-
-          {tab === "nptel" && (
-
-            <div style={{ display: "grid", gap: 30 }}>
+            )}
 
 
 
-              {/* Engineering Section */}
+            {/* NPTEL Tab Content */}
 
-              <div>
+            {tab === "nptel" && (
 
-                <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+              <div style={{ display: "grid", gap: 30 }}>
 
-                  Technical & Engineering
 
-                </h4>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
+                {/* Engineering Section */}
 
-                  {CERTIFICATES.nptel_tech.map((c, i) => (
+                <div>
 
-                    <NPTELCourseCard key={i} cert={c} type="technical" openModal={openModal} />
+                  <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
 
-                  ))}
+                    Technical & Engineering
+
+                  </h4>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
+
+                    {CERTIFICATES.nptel_tech.map((c, i) => (
+
+                      <NPTELCourseCard key={i} cert={c} type="technical" openModal={openModal} />
+
+                    ))}
+
+                  </div>
 
                 </div>
 
-              </div>
 
 
+                {/* Soft Skills Section */}
 
-              {/* Soft Skills Section */}
+                <div>
 
-              <div>
+                  <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
 
-                <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+                    Soft Skills
 
-                  Soft Skills
+                  </h4>
 
-                </h4>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
+                    {CERTIFICATES.nptel_soft.map((c, i) => (
 
-                  {CERTIFICATES.nptel_soft.map((c, i) => (
+                      <NPTELCourseCard key={i} cert={c} type="soft" openModal={openModal} />
 
-                    <NPTELCourseCard key={i} cert={c} type="soft" openModal={openModal} />
+                    ))}
 
-                  ))}
+                  </div>
 
                 </div>
 
+
+
+
+
+
+
               </div>
 
-
-
-              
+            )}
 
 
 
-            </div>
-
-          )}
+          </div>
 
 
 
@@ -777,11 +805,7 @@ export default function Certificates() {
 
 
 
-      </div>
-
-
-
-      {/* Marklist Link and Embed */}
+        {/* Marklist Link and Embed */}
 
         <div style={{ textAlign: "center", marginBottom: 10, marginTop: 40 }}>
 
@@ -849,19 +873,19 @@ export default function Certificates() {
 
           <div style={{ height: "600px", width: "100%", borderRadius: "12px", overflow: "hidden", border: "1px solid #333", marginBottom: "10px", background: "#111", marginTop: 20 }}>
 
-             <iframe 
+            <iframe
 
-               src="/Marklist_NPTEL.pdf" 
+              src="/Marklist_NPTEL.pdf"
 
-               title="NPTEL Consolidated Marklist" 
+              title="NPTEL Consolidated Marklist"
 
-               width="100%" 
+              width="100%"
 
-               height="100%" 
+              height="100%"
 
-               style={{ border: "none" }} 
+              style={{ border: "none" }}
 
-             />
+            />
 
           </div>
 
@@ -869,191 +893,207 @@ export default function Certificates() {
 
 
 
-      {/* MODAL PREVIEW */}
+        {/* MODAL PREVIEW */}
 
-      <AnimatePresence>
+        <AnimatePresence>
 
-        {selectedCert && (
-
-          <motion.div
-
-            className="modal-backdrop"
-
-            initial={{ opacity: 0 }}
-
-            animate={{ opacity: 1 }}
-
-            exit={{ opacity: 0 }}
-
-            style={{
-
-              position: "fixed",
-
-              top: 0,
-
-              left: 0,
-
-              right: 0,
-
-              bottom: 0,
-
-              background: "rgba(0,0,0,0.85)",
-
-              display: "flex",
-
-              justifyContent: "center",
-
-              alignItems: "center",
-
-              zIndex: 1000,
-
-              padding: 20
-
-            }}
-
-            onClick={() => setSelectedCert(null)}
-
-          >
+          {selectedCert && (
 
             <motion.div
 
-              initial={{ scale: 0.8, opacity: 0 }}
+              className="modal-backdrop"
 
-              animate={{ scale: 1, opacity: 1 }}
+              initial={{ opacity: 0 }}
 
-              exit={{ scale: 0.8, opacity: 0 }}
+              animate={{ opacity: 1 }}
 
-              onClick={(e) => e.stopPropagation()}
+              exit={{ opacity: 0 }}
 
               style={{
 
-                maxWidth: "800px",
+                position: "fixed",
 
-                width: "100%",
+                top: 0,
 
-                background: "#111",
+                left: 0,
 
-                borderRadius: 12,
+                right: 0,
 
-                overflow: "hidden",
+                bottom: 0,
 
-                border: "1px solid #333",
-
-                boxShadow: "0 0 40px rgba(0,0,0,0.5)",
+                background: "rgba(0,0,0,0.85)",
 
                 display: "flex",
 
-                flexDirection: "column"
+                justifyContent: "center",
+
+                alignItems: "center",
+
+                zIndex: 1000,
+
+                padding: 20
 
               }}
 
+              onClick={() => setSelectedCert(null)}
+
             >
 
-              <div style={{ padding: "16px", borderBottom: "1px solid #333", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <motion.div
 
-                <h3 style={{ margin: 0, color: "#fff", fontSize: "1.2rem" }}>
+                initial={{ scale: 0.8, opacity: 0 }}
 
-                  {selectedCert.title} {selectedCert.imgs && <span style={{fontSize: "0.8rem", color: "#aaa"}}>({currentImgIndex + 1}/{selectedCert.imgs.length})</span>}
+                animate={{ scale: 1, opacity: 1 }}
 
-                </h3>
+                exit={{ scale: 0.8, opacity: 0 }}
 
-                <button 
+                onClick={(e) => e.stopPropagation()}
 
-                  onClick={() => setSelectedCert(null)}
+                style={{
 
-                  style={{ background: "none", border: "none", color: "#aaa", fontSize: "1.5rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
+                  maxWidth: "800px",
 
-                >
+                  width: "100%",
 
-                  <IoClose size={24} />
+                  background: "#111",
 
-                </button>
+                  borderRadius: 12,
 
-              </div>
+                  overflow: "hidden",
 
-              
+                  border: "1px solid #333",
 
-              <div className="custom-scrollbar" style={{ padding: "20px", display: "flex", flexDirection: "column", gap: 20, alignItems: "center", background: "#000", position: "relative", minHeight: "300px", overflowY: "auto", maxHeight: "80vh" }}>
+                  boxShadow: "0 0 40px rgba(0,0,0,0.5)",
 
-                 
+                  display: "flex",
 
-                 {selectedCert.imgs ? (
+                  flexDirection: "column"
 
-                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15, width: "100%" }}>
+                }}
 
-                     {selectedCert.imgs.map((imgSrc, idx) => (
+              >
 
-                       <img 
+                <div style={{ padding: "16px", borderBottom: "1px solid #333", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+
+                  <h3 style={{ margin: 0, color: "#fff", fontSize: "1.2rem" }}>
+
+                    {selectedCert.title} {selectedCert.imgs && <span style={{ fontSize: "0.8rem", color: "#aaa" }}>({currentImgIndex + 1}/{selectedCert.imgs.length})</span>}
+
+                  </h3>
+
+                  <button
+
+                    onClick={() => setSelectedCert(null)}
+
+                    style={{ background: "none", border: "none", color: "#aaa", fontSize: "1.5rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
+
+                  >
+
+                    <IoClose size={24} />
+
+                  </button>
+
+                </div>
+
+
+
+                <div className="custom-scrollbar" style={{ padding: "20px", display: "flex", flexDirection: "column", gap: 20, alignItems: "center", background: "#000", position: "relative", minHeight: "300px", overflowY: "auto", maxHeight: "80vh" }}>
+
+
+
+                  {selectedCert.pdf ? (
+
+                    <iframe
+
+                      src={selectedCert.pdf}
+
+                      title={selectedCert.title}
+
+                      width="100%"
+
+                      height="500px"
+
+                      style={{ border: "none", borderRadius: 8, background: "#fff" }}
+
+                    />
+
+                  ) : selectedCert.imgs ? (
+
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15, width: "100%" }}>
+
+                      {selectedCert.imgs.map((imgSrc, idx) => (
+
+                        <img
 
                           key={idx}
 
-                          src={imgSrc} 
+                          src={imgSrc}
 
-                          alt={`${selectedCert.title} ${idx + 1}`} 
+                          alt={`${selectedCert.title} ${idx + 1}`}
 
-                          style={{ width: "100%", borderRadius: 8, border: "1px solid #333" }} 
+                          style={{ width: "100%", borderRadius: 8, border: "1px solid #333" }}
 
                           onError={(e) => {
 
-                            e.target.onerror = null; 
+                            e.target.onerror = null;
 
                             e.target.src = "https://placehold.co/600x400/1a1a1a/FFF?text=Image+Not+Found";
 
                           }}
 
-                       />
+                        />
 
-                     ))}
+                      ))}
 
-                   </div>
+                    </div>
 
-                 ) : (
+                  ) : (
 
-                   <img 
+                    <img
 
-                      src={selectedCert.img} 
+                      src={selectedCert.img}
 
-                      alt={selectedCert.title} 
+                      alt={selectedCert.title}
 
-                      style={{ maxHeight: "70vh", maxWidth: "100%", borderRadius: 8 }} 
+                      style={{ maxHeight: "70vh", maxWidth: "100%", borderRadius: 8 }}
 
                       onError={(e) => {
 
-                        e.target.onerror = null; 
+                        e.target.onerror = null;
 
                         e.target.src = "https://placehold.co/600x400/1a1a1a/FFF?text=Image+Not+Found";
 
                       }}
 
-                   />
+                    />
 
-                 )}
-
-              </div>
-
-
-
-              {selectedCert.desc && (
-
-                <div style={{ padding: "16px", color: "#ccc", fontSize: "0.95rem", textAlign: "center", borderTop: "1px solid #333" }}>
-
-                  {selectedCert.desc}
+                  )}
 
                 </div>
 
-              )}
+
+
+                {selectedCert.desc && (
+
+                  <div style={{ padding: "16px", color: "#ccc", fontSize: "0.95rem", textAlign: "center", borderTop: "1px solid #333" }}>
+
+                    {selectedCert.desc}
+
+                  </div>
+
+                )}
+
+              </motion.div>
 
             </motion.div>
 
-          </motion.div>
+          )}
 
-        )}
+        </AnimatePresence>
 
-      </AnimatePresence>
+      </section>
 
-    </section>
-
-  </div> /* Closing certificates-wrapper div */
+    </div> /* Closing certificates-wrapper div */
 
   );
 
