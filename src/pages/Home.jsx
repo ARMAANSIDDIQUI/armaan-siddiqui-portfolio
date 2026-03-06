@@ -112,15 +112,98 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div style={{ position: 'relative', width: '380px', height: '380px' }}>
-            {/* Background Glow */}
-            <div style={{
-              position: 'absolute',
-              inset: '-20px',
-              background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)',
-              opacity: 0.2,
-              filter: 'blur(30px)',
-              zIndex: 0
-            }} />
+            {/* Rotating Conic Gradient Aura */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+              style={{
+                position: 'absolute',
+                inset: '-10px',
+                background: 'conic-gradient(from 0deg, transparent, var(--primary), transparent, var(--secondary), transparent)',
+                filter: 'blur(40px)',
+                borderRadius: '50%',
+                opacity: 0.6,
+                zIndex: 0,
+              }}
+            />
+
+            {/* Orbital Dashed Ring */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+              style={{
+                position: 'absolute',
+                inset: '-40px',
+                border: '2px dashed rgba(255, 255, 255, 0.1)',
+                borderRadius: '50%',
+                zIndex: 0,
+              }}
+            >
+              {/* Orbital Nodes */}
+              <div style={{
+                position: 'absolute',
+                top: '-6px',
+                left: 'calc(50% - 6px)',
+                width: '12px',
+                height: '12px',
+                background: 'var(--primary)',
+                borderRadius: '50%',
+                boxShadow: '0 0 15px var(--primary)'
+              }} />
+              <div style={{
+                position: 'absolute',
+                bottom: '-6px',
+                left: 'calc(50% - 6px)',
+                width: '12px',
+                height: '12px',
+                background: 'var(--secondary)',
+                borderRadius: '50%',
+                boxShadow: '0 0 15px var(--secondary)'
+              }} />
+            </motion.div>
+
+            {/* Floating Glass Cube */}
+            <motion.div
+              animate={{
+                y: [0, -25, 0],
+                rotate: [0, 45, 90],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                top: '5%',
+                right: '-15%',
+                width: '70px',
+                height: '70px',
+                background: 'rgba(255,255,255,0.03)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '16px',
+                zIndex: 1,
+              }}
+            />
+
+            {/* Floating Glass Sphere */}
+            <motion.div
+              animate={{
+                y: [0, 20, 0],
+                scale: [1, 1.15, 1]
+              }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                bottom: '8%',
+                left: '-12%',
+                width: '50px',
+                height: '50px',
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '50%',
+                zIndex: 1,
+              }}
+            />
 
             {/* Glass Container */}
             <GlassCard
@@ -136,7 +219,7 @@ export default function Home() {
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02))'
               }}>
               <img
-                src="/armaan.png"
+                src="/armaan2.png"
                 alt="Armaan Siddiqui"
                 style={{
                   width: '100%',
