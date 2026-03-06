@@ -162,48 +162,6 @@ export default function Home() {
               }} />
             </motion.div>
 
-            {/* Floating Glass Cube */}
-            <motion.div
-              animate={{
-                y: [0, -25, 0],
-                rotate: [0, 45, 90],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                position: 'absolute',
-                top: '5%',
-                right: '-15%',
-                width: '70px',
-                height: '70px',
-                background: 'rgba(255,255,255,0.03)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '16px',
-                zIndex: 1,
-              }}
-            />
-
-            {/* Floating Glass Sphere */}
-            <motion.div
-              animate={{
-                y: [0, 20, 0],
-                scale: [1, 1.15, 1]
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                position: 'absolute',
-                bottom: '8%',
-                left: '-12%',
-                width: '50px',
-                height: '50px',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '50%',
-                zIndex: 1,
-              }}
-            />
 
             {/* Glass Container */}
             <GlassCard
