@@ -26,10 +26,10 @@ const REAL_WORLD_PROJECTS = [
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
-    title: 'Chatorzzz',
+    title: 'Shashwat Enterprises',
     desc: 'Wholesale E-commerce platform for food products designed for B2B transactions.',
     tech: ['E-commerce', 'Web Development'],
-    live: 'https://chatorzzz.in/',
+    live: 'https://shashwatmbd.in/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
