@@ -27,9 +27,23 @@ const REAL_WORLD_PROJECTS = [
   },
   {
     title: 'Shashwat Enterprises',
-    desc: 'Wholesale E-commerce platform for food products designed for B2B transactions.',
-    tech: ['E-commerce', 'Web Development'],
+    desc: 'Wholesale B2B E-commerce platform specialized in food products and enterprise solutions.',
+    tech: ['E-commerce', 'Web Development', 'B2B'],
     live: 'https://shashwatmbd.in/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
+    title: 'Chatorzzz',
+    desc: 'Premium sweets and candies e-commerce destination with a playful, high-energy interface.',
+    tech: ['React', 'Node.js', 'Tailwind', 'E-commerce'],
+    live: 'https://chatorzzz.in/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
+    title: 'Digital Honest',
+    desc: 'Most trusted advertising agency in Dehradun. "Offline ho ya Online, Brand sab jagah!" — Specializing in outdoor hoardings, transit branding, and digital marketing.',
+    tech: ['Branding', 'Digital Ads', 'Outdoor Advertising'],
+    live: 'https://digitalhonest.in/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
@@ -44,6 +58,13 @@ const REAL_WORLD_PROJECTS = [
     desc: 'Ashram Portal for updates, dynamic content, and Maps API.',
     tech: ['React', 'Maps API', 'Dynamic Content'],
     live: 'https://jyotidham.ca/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
+    title: 'Jyoti Foundation',
+    desc: 'Welfare foundation focused on high-quality eye treatment and community healthcare. Currently under development to better serve people in need.',
+    tech: ['Eye Care', 'Health Welfare', 'React'],
+    live: 'https://jyoti-foundation.org/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
@@ -67,7 +88,7 @@ const FULL_STACK_PROJECTS = [
     title: 'CODE++',
     desc: 'DSA programming platform with Judge0 API, real-time social mechanics, and global leaderboards.',
     tech: ['MERN', 'Tailwind', 'ShadcnUI', 'Judge0 API'],
-    live: 'https://codeplusplus-lake.vercel.app/',
+    live: 'https://code-plus-plus.armaansiddiqui.online/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {

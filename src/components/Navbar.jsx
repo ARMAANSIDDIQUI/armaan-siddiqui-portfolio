@@ -22,11 +22,11 @@ export default function Navbar() {
 
   // Use a standard breakpoint for mobile menu
   const checkResponsive = () => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1200) {
       setShowButton(true);
     } else {
       setShowButton(false);
-      setIsOpen(false); // Ensure menu closes when switching to desktop
+      setIsOpen(false);
     }
   };
 
@@ -38,8 +38,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* --- Navbar --- */}
-      {/* --- Navbar --- */}
       <nav
         ref={navRef}
         className="glass-panel"
@@ -51,7 +49,7 @@ export default function Navbar() {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "1rem 2rem",
-          background: "rgba(2, 6, 23, 0.5)", // Darker semi-transparent base
+          background: "rgba(2, 6, 23, 0.7)",
           borderBottom: "1px solid var(--glass-border)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
@@ -59,7 +57,6 @@ export default function Navbar() {
           transition: "all 0.3s ease"
         }}
       >
-        {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <motion.div
             className="logo"
@@ -84,19 +81,18 @@ export default function Navbar() {
           </motion.div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h1 className="text-gradient" style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Armaan Siddiqui</h1>
-            <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
-              Full Stack • ML • DS
+            <div style={{ fontSize: 10, color: "var(--text-muted)", letterSpacing: '1px' }}>
+              FULL STACK • ML • DS
             </div>
           </div>
         </div>
 
-        {/* Desktop links */}
         <div
           ref={linksRef}
           style={{
             display: showButton ? "none" : "flex",
-            justifyContent: "center",
-            gap: "2rem",
+            justifyContent: "flex-end",
+            gap: "1.5rem",
             alignItems: "center",
             flexGrow: 1,
           }}
@@ -108,28 +104,20 @@ export default function Navbar() {
               to={l.to}
               style={({ isActive }) => ({
                 position: "relative",
-                fontSize: "0.95rem",
+                fontSize: "0.9rem",
                 textDecoration: "none",
-                color: isActive ? "var(--text-main)" : "var(--text-muted)", // Fixed color logic
+                color: isActive ? "var(--text-main)" : "var(--text-muted)",
                 fontWeight: isActive ? 600 : 500,
                 transition: "color 0.2s ease"
               })}
             >
               {({ isActive }) => (
                 <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    color: "var(--primary)",
-                  }}
+                  whileHover={{ scale: 1.05, color: "var(--primary)" }}
                   transition={{ duration: 0.2 }}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
                 >
                   <span style={{ position: 'relative', zIndex: 1 }}>{l.label}</span>
-
                   {isActive && (
                     <motion.div
                       layoutId="underline"
@@ -153,7 +141,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Hamburger */}
         {showButton && (
           <div className="mobile-btn">
             <button
@@ -179,66 +166,65 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
       <AnimatePresence>
         {isOpen && showButton && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
             style={{
               position: "fixed",
               top: 0,
-              left: 0,
+              right: 0,
               width: "100%",
               height: "100vh",
-              background: "rgba(0,0,0,0.95)",
-              backdropFilter: "blur(12px)",
+              background: "rgba(2, 6, 23, 0.98)",
+              backdropFilter: "blur(20px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              paddingTop: "4rem",
-              overflowY: "auto",
+              justifyContent: "center",
+              padding: "2rem",
               zIndex: 9999,
             }}
           >
-            <button
-              style={{
-                position: "absolute",
-                top: "1rem",
-                right: "1rem",
-                fontSize: "2rem",
-                color: "#fff",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-              onClick={() => setIsOpen(false)}
-            >
-              <IoClose size={28} />
-            </button>
-
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setIsOpen(false)}
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: "1rem 0",
-                  width: "100%",
-                  textAlign: "center",
-                  fontSize: 16,
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
-                }}
-              >
-                {l.label}
-              </NavLink>
-            ))}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              width: '100%',
+              maxWidth: '300px'
+            }}>
+              {links.map((l, index) => (
+                <motion.div
+                  key={l.to}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <NavLink
+                    to={l.to}
+                    onClick={() => setIsOpen(false)}
+                    style={({ isActive }) => ({
+                      display: 'block',
+                      color: isActive ? "var(--primary)" : "#fff",
+                      textDecoration: "none",
+                      padding: "1rem",
+                      textAlign: "center",
+                      fontSize: '1.2rem',
+                      fontWeight: isActive ? 700 : 500,
+                      borderRadius: '12px',
+                      background: isActive ? 'rgba(0, 119, 255, 0.1)' : 'transparent',
+                      border: isActive ? '1px solid rgba(0, 119, 255, 0.2)' : 'none',
+                      transition: "all 0.2s ease"
+                    })}
+                  >
+                    {l.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
