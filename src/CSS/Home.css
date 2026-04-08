@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden; /* Prevent horizontal scroll from decorative bits */
 }
 
 .home-grid {
@@ -251,12 +252,25 @@
   }
 
   .photo-wrapper {
-    width: 80%;
-    max-width: 320px;
+    width: min(85%, 300px); /* Slightly smaller to leave room for decorative effects */
+    margin: 20px auto;
   }
 
   .orbital-ring {
-    inset: -20px;
+    inset: -15px; /* Smaller inset on mobile */
+  }
+
+  .photo-aura {
+    inset: -10px;
+  }
+
+  .float-icon-top {
+    right: -5px;
+    top: -5px;
+  }
+
+  .float-icon-bottom {
+    left: -5px;
   }
 }
 
