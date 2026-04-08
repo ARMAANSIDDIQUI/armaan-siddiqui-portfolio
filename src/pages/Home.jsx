@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { MapPin, Briefcase, Mail, Github, Linkedin, Mail as MailIcon } from 'lucide-react'
 import { FaLaptopCode, FaRocket } from 'react-icons/fa'
 import GlassCard from '../components/ui/GlassCard'
+import '../CSS/Home.css'
 import '../CSS/Contact.css'
 import '../index.css'
 
