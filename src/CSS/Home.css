@@ -86,6 +86,16 @@
   padding: 20px !important;
 }
 
+.info-card.achievement {
+  border-color: rgba(251, 191, 36, 0.3) !important;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.02)) !important;
+}
+
+.info-card.achievement:hover {
+  border-color: #fbbf24 !important;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.2) !important;
+}
+
 .info-card-content {
   display: flex;
   align-items: center;

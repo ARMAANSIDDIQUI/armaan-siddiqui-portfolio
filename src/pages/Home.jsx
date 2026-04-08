@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Briefcase, Mail, Github, Linkedin, Mail as MailIcon } from 'lucide-react'
+import { MapPin, Briefcase, Mail, Github, Linkedin, Trophy, Mail as MailIcon } from 'lucide-react'
 import { FaLaptopCode, FaRocket } from 'react-icons/fa'
 import GlassCard from '../components/ui/GlassCard'
 import '../CSS/Home.css'
@@ -68,6 +68,16 @@ export default function Home() {
 
           {/* Interactive Info Cards */}
           <div className="info-cards-grid">
+            <GlassCard className="info-card achievement">
+              <div className="info-card-content">
+                <Trophy size={20} color="#fbbf24" />
+                <div>
+                  <small>GATE 2025</small>
+                  <strong>AIR 4358 (DA)</strong>
+                </div>
+              </div>
+            </GlassCard>
+
             <GlassCard className="info-card">
               <div className="info-card-content">
                 <MapPin size={20} color="var(--secondary)" />
