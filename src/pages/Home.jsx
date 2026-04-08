@@ -23,169 +23,104 @@ export default function Home() {
   ];
 
   return (
-    <section className="home-container" style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto', minHeight: 'calc(100vh - 80px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
-
+    <section className="home-container">
+      <div className="home-grid">
         {/* Left: Info Section */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="home-info"
-          style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
+          className="home-info-section"
         >
-          <div>
+          <div className="intro-text">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.2rem', marginBottom: '8px', letterSpacing: '1px' }}
+              className="greeting"
             >
               HELLO THERE, I'M
             </motion.div>
 
-            <h1 style={{ fontSize: '3.5rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '16px' }}>
+            <h1 className="main-title">
               <span className="text-gradient">Armaan Siddiqui</span>
             </h1>
 
-            <p className="typing-effect" style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '500px', borderLeft: '3px solid var(--secondary)', paddingLeft: '16px' }}>
+            <p className="typing-description">
               Full Stack Developer | ML & DS Enthusiast | Tech Explorer
             </p>
           </div>
 
           {/* Profession Tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <div className="profession-pills">
             {professions.map((role, i) => (
-              <span
-                key={i}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  fontSize: '0.9rem',
-                  color: 'var(--highlight)'
-                }}
-              >
+              <span key={i} className="profession-tag">
                 {role}
               </span>
             ))}
           </div>
 
-          <div style={{ display: 'flex', gap: '16px', marginTop: '10px' }}>
+          <div className="cta-buttons">
             <button className="vote-btn agree" onClick={() => window.location.href = '#contact'}>Contact Me</button>
             <button className="vote-btn disagree" onClick={() => window.location.href = '/projects'}>View Work</button>
           </div>
 
           {/* Interactive Info Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginTop: '20px' }}>
-            <GlassCard style={{ padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)' }}>
+          <div className="info-cards-grid">
+            <GlassCard className="info-card">
+              <div className="info-card-content">
                 <MapPin size={20} color="var(--secondary)" />
                 <div>
-                  <small style={{ display: 'block', fontSize: '12px' }}>Location</small>
-                  <strong style={{ color: 'var(--text-main)' }}>Moradabad, India</strong>
+                  <small>Location</small>
+                  <strong>Moradabad, India</strong>
                 </div>
               </div>
             </GlassCard>
 
-            <GlassCard style={{ padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)' }}>
+            <GlassCard className="info-card">
+              <div className="info-card-content">
                 <Briefcase size={20} color="var(--primary)" />
                 <div>
-                  <small style={{ display: 'block', fontSize: '12px' }}>Status</small>
-                  <strong style={{ color: 'var(--text-main)' }}>Available for Hire</strong>
+                  <small>Status</small>
+                  <strong>Available for Hire</strong>
                 </div>
               </div>
             </GlassCard>
           </div>
-
         </motion.div>
-
 
         {/* Right: Floating Photo */}
         <motion.div
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          className="home-photo-section"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div style={{ position: 'relative', width: '380px', height: '380px' }}>
+          <div className="photo-wrapper">
             {/* Rotating Conic Gradient Aura */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                inset: '-10px',
-                background: 'conic-gradient(from 0deg, transparent, var(--primary), transparent, var(--secondary), transparent)',
-                filter: 'blur(40px)',
-                borderRadius: '50%',
-                opacity: 0.6,
-                zIndex: 0,
-              }}
+              className="photo-aura"
             />
 
             {/* Orbital Dashed Ring */}
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                inset: '-40px',
-                border: '2px dashed rgba(255, 255, 255, 0.1)',
-                borderRadius: '50%',
-                zIndex: 0,
-              }}
+              className="orbital-ring"
             >
               {/* Orbital Nodes */}
-              <div style={{
-                position: 'absolute',
-                top: '-6px',
-                left: 'calc(50% - 6px)',
-                width: '12px',
-                height: '12px',
-                background: 'var(--primary)',
-                borderRadius: '50%',
-                boxShadow: '0 0 15px var(--primary)'
-              }} />
-              <div style={{
-                position: 'absolute',
-                bottom: '-6px',
-                left: 'calc(50% - 6px)',
-                width: '12px',
-                height: '12px',
-                background: 'var(--secondary)',
-                borderRadius: '50%',
-                boxShadow: '0 0 15px var(--secondary)'
-              }} />
+              <div className="orbital-node primary" />
+              <div className="orbital-node secondary" />
             </motion.div>
 
-
             {/* Glass Container */}
-            <GlassCard
-              className="photo-card"
-              style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '10px',
-                borderRadius: '24px',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02))'
-              }}>
+            <GlassCard className="photo-glass-card">
               <img
                 src="/armaan2.png"
                 alt="Armaan Siddiqui"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255,255,255,0.1)'
-                }}
+                className="profile-img"
               />
             </GlassCard>
 
@@ -193,9 +128,9 @@ export default function Home() {
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              style={{ position: 'absolute', top: '-20px', right: '-20px', zIndex: 2 }}
+              className="float-icon-top"
             >
-              <GlassCard style={{ padding: '12px', borderRadius: '12px' }}>
+              <GlassCard className="icon-badge">
                 <FaLaptopCode size={24} color="var(--primary)" />
               </GlassCard>
             </motion.div>
@@ -203,15 +138,14 @@ export default function Home() {
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              style={{ position: 'absolute', bottom: '40px', left: '-30px', zIndex: 2 }}
+              className="float-icon-bottom"
             >
-              <GlassCard style={{ padding: '12px', borderRadius: '12px' }}>
+              <GlassCard className="icon-badge">
                 <FaRocket size={24} color="var(--secondary)" />
               </GlassCard>
             </motion.div>
           </div>
         </motion.div>
-
       </div>
 
       {/* Bottom Socials */}
@@ -219,9 +153,9 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        style={{ marginTop: '60px', textAlign: 'center' }}
+        className="socials-footer"
       >
-        <motion.div className="contact-links" style={{ marginBottom: 0 }}>
+        <div className="contact-links">
           {quickLinks.map((item, i) => (
             <motion.a
               key={i}
@@ -245,9 +179,8 @@ export default function Home() {
               />
             </motion.a>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
-
     </section>
   )
 }

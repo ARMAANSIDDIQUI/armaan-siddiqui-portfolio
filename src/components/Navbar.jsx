@@ -168,64 +168,140 @@ export default function Navbar() {
 
       <AnimatePresence>
         {isOpen && showButton && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            style={{
-              position: "fixed",
-              top: 0,
-              right: 0,
-              width: "100%",
-              height: "100vh",
-              background: "rgba(2, 6, 23, 0.98)",
-              backdropFilter: "blur(20px)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "2rem",
-              zIndex: 9999,
-            }}
-          >
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-              width: '100%',
-              maxWidth: '300px'
-            }}>
-              {links.map((l, index) => (
-                <motion.div
-                  key={l.to}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100vh",
+                background: "rgba(2, 6, 23, 0.7)",
+                backdropFilter: "blur(4px)",
+                zIndex: 9998,
+              }}
+            />
+
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              style={{
+                position: "fixed",
+                top: 0,
+                right: 0,
+                width: "280px",
+                height: "100vh",
+                background: "rgba(2, 6, 23, 0.95)",
+                backdropFilter: "blur(20px)",
+                borderLeft: "1px solid var(--glass-border)",
+                display: "flex",
+                flexDirection: "column",
+                zIndex: 9999,
+                padding: "1.5rem",
+                boxShadow: "-10px 0 30px rgba(0,0,0,0.5)"
+              }}
+            >
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center',
+                marginBottom: '2rem',
+                borderBottom: '1px solid var(--glass-border)',
+                paddingBottom: '1rem'
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "8px",
+                    background: "linear-gradient(135deg, var(--primary), var(--secondary))",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "900",
+                    fontSize: "0.9rem",
+                    color: "white"
+                  }}>
+                    AS
+                  </div>
+                  <span style={{ fontWeight: 700, fontSize: '1.1rem' }} className="text-gradient">Menu</span>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid var(--glass-border)",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#fff",
+                    cursor: "pointer"
+                  }}
                 >
-                  <NavLink
-                    to={l.to}
-                    onClick={() => setIsOpen(false)}
-                    style={({ isActive }) => ({
-                      display: 'block',
-                      color: isActive ? "var(--primary)" : "#fff",
-                      textDecoration: "none",
-                      padding: "1rem",
-                      textAlign: "center",
-                      fontSize: '1.2rem',
-                      fontWeight: isActive ? 700 : 500,
-                      borderRadius: '12px',
-                      background: isActive ? 'rgba(0, 119, 255, 0.1)' : 'transparent',
-                      border: isActive ? '1px solid rgba(0, 119, 255, 0.2)' : 'none',
-                      transition: "all 0.2s ease"
-                    })}
+                  <IoClose size={20} />
+                </button>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                overflowY: 'auto',
+                flexGrow: 1
+              }}>
+                {links.map((l, index) => (
+                  <motion.div
+                    key={l.to}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {l.label}
-                  </NavLink>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                    <NavLink
+                      to={l.to}
+                      onClick={() => setIsOpen(false)}
+                      style={({ isActive }) => ({
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: isActive ? "var(--primary)" : "var(--text-muted)",
+                        textDecoration: "none",
+                        padding: "0.8rem 1rem",
+                        fontSize: '0.95rem',
+                        fontWeight: isActive ? 600 : 500,
+                        borderRadius: '10px',
+                        background: isActive ? 'rgba(0, 119, 255, 0.1)' : 'transparent',
+                        border: isActive ? '1px solid rgba(0, 119, 255, 0.2)' : '1px solid transparent',
+                        transition: "all 0.2s ease"
+                      })}
+                    >
+                      {l.label}
+                    </NavLink>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '1rem',
+                borderTop: '1px solid var(--glass-border)',
+                fontSize: '0.8rem',
+                color: 'var(--text-muted)',
+                textAlign: 'center'
+              }}>
+                Armaan Siddiqui &copy; 2026
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
