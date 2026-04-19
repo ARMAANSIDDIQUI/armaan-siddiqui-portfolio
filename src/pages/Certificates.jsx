@@ -3,6 +3,50 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Award, Trophy, Scroll, Code, Star, Briefcase, Mic, FileText, CheckCircle } from "lucide-react";
 import { IoClose } from "react-icons/io5";
 
+// Lazy Image Component with Loading State
+const LazyImage = ({ src, alt, style, placeholderText = "Loading..." }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  return (
+    <div style={{ ...style, position: "relative", background: "#1a1a1a", overflow: "hidden" }}>
+      {!isLoaded && (
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#444",
+          fontSize: "0.8rem",
+          background: "linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%)",
+          backgroundSize: "200% 100%",
+          animation: "shimmer 1.5s infinite linear"
+        }}>
+          {placeholderText}
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setIsLoaded(true)}
+        style={{
+          ...style,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          opacity: isLoaded ? 0.9 : 0,
+          transition: "opacity 0.5s ease"
+        }}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = `https://placehold.co/600x400/222/FFF?text=${alt.split(' ').join('+')}`;
+          setIsLoaded(true);
+        }}
+      />
+    </div>
+  );
+};
+
 // NPTEL Course Card Component (Technical & Soft Skills)
 const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
   const borderColor = type === 'technical' ? '#0ea5e9' : '#f472b6';
@@ -10,9 +54,10 @@ const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.05 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.3 }}
       style={{
         background: "rgba(255, 255, 255, 0.03)",
         padding: 15,
@@ -27,14 +72,12 @@ const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
       whileHover={{ scale: 1.02, background: "#222" }}
     >
       {/* Mini Preview */}
-      <div style={{ height: "160px", width: "100%", borderRadius: "6px", overflow: "hidden", background: "#000" }}>
-        <img
-          src={cert.img}
-          alt={cert.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-          onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=NPTEL"; }}
-        />
-      </div>
+      <LazyImage
+        src={cert.img}
+        alt={cert.title}
+        style={{ height: "160px", width: "100%", borderRadius: "6px" }}
+        placeholderText="NPTEL"
+      />
       <div>
         <h5 style={{ color: "#fff", margin: "0 0 5px 0" }}>{cert.title}</h5>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem" }}>
@@ -50,7 +93,8 @@ const NPTELCourseCard = React.memo(({ cert, type, openModal }) => {
 const TechnicalCertCard = React.memo(({ cert, openModal }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, margin: "-50px" }}
     transition={{ duration: 0.3 }}
     style={{
       background: "rgba(255, 255, 255, 0.03)",
@@ -67,14 +111,12 @@ const TechnicalCertCard = React.memo(({ cert, openModal }) => (
     whileHover={{ scale: 1.03, borderColor: "#0ea5e9" }}
   >
     {/* Image Preview */}
-    <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img
-        src={cert.img}
-        alt={cert.title}
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-        onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Tech+Cert"; }}
-      />
-    </div>
+    <LazyImage
+      src={cert.img}
+      alt={cert.title}
+      style={{ height: "160px", width: "100%", borderRadius: "8px" }}
+      placeholderText="Technical"
+    />
 
     <div>
       <h4 style={{ color: "#fff", fontSize: "1.1rem", marginBottom: 5 }}>{cert.title}</h4>
@@ -90,6 +132,7 @@ const NPTELAchievementCard = React.memo(({ achievement, openModal }) => (
   <motion.div
     initial={{ opacity: 0, y: 15 }}
     whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
     transition={{ delay: 0.1 }}
     style={{
       background: "rgba(249, 115, 22, 0.05)",
@@ -106,14 +149,12 @@ const NPTELAchievementCard = React.memo(({ achievement, openModal }) => (
     whileHover={{ scale: 1.02, borderColor: "#f97316" }}
   >
     {/* Image Preview */}
-    <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img
-        src={achievement.img}
-        alt={achievement.title}
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-        onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=NPTEL+Achievement"; }}
-      />
-    </div>
+    <LazyImage
+      src={achievement.img}
+      alt={achievement.title}
+      style={{ height: "160px", width: "100%", borderRadius: "8px" }}
+      placeholderText="Achievement"
+    />
 
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
@@ -133,6 +174,7 @@ const LeadershipInternshipCard = React.memo(({ item, type, openModal }) => (
   <motion.div
     initial={{ opacity: 0, x: -15 }}
     whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
     transition={{ delay: 0.1 }}
     style={{
       background: "rgba(234, 179, 8, 0.05)",
@@ -149,14 +191,12 @@ const LeadershipInternshipCard = React.memo(({ item, type, openModal }) => (
     whileHover={{ scale: 1.02, borderColor: "#eab308" }}
   >
     {/* Image Preview */}
-    <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img
-        src={item.img}
-        alt={item.role}
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-        onError={(e) => { e.target.src = `https://placehold.co/600x400/222/FFF?text=${type}`; }}
-      />
-    </div>
+    <LazyImage
+      src={item.img}
+      alt={item.role}
+      style={{ height: "160px", width: "100%", borderRadius: "8px" }}
+      placeholderText={type}
+    />
 
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
@@ -189,16 +229,17 @@ const CompetitiveExamCard = React.memo(({ exam, openModal }) => (
     whileHover={{ scale: 1.02, borderColor: "#f87171" }}
   >
     {/* Image Preview inside card */}
-    <div className="custom-scrollbar" style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000", position: "relative", display: "flex", overflowX: "auto", scrollSnapType: "x mandatory" }}>
+    <div className="custom-scrollbar" style={{ height: "160px", width: "100%", borderRadius: "8px", background: "#000", position: "relative", display: "flex", overflowX: "auto", scrollSnapType: "x mandatory" }}>
       {exam.imgs ? (
         exam.imgs.map((imgSrc, idx) => (
-          <img
-            key={idx}
-            src={imgSrc}
-            alt={`${exam.title} ${idx + 1}`}
-            style={{ width: "33.33%", height: "100%", objectFit: "contain", opacity: 0.9, scrollSnapAlign: "start" }}
-            onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Image+Not+Found"; }}
-          />
+          <div key={idx} style={{ minWidth: "33.33%", height: "100%", scrollSnapAlign: "start" }}>
+            <LazyImage
+              src={imgSrc}
+              alt={`${exam.title} ${idx + 1}`}
+              style={{ width: "100%", height: "100%" }}
+              placeholderText="..."
+            />
+          </div>
         ))
       ) : exam.pdf ? (
         <iframe
@@ -209,11 +250,11 @@ const CompetitiveExamCard = React.memo(({ exam, openModal }) => (
           style={{ border: "none", overflow: "hidden", pointerEvents: "none" }}
         />
       ) : (
-        <img
+        <LazyImage
           src={exam.img}
           alt={exam.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-          onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=GATE+2025"; }}
+          style={{ width: "100%", height: "100%" }}
+          placeholderText="EXAM"
         />
       )}
     </div>
@@ -253,14 +294,12 @@ const CompetitionCard = React.memo(({ comp, openModal }) => (
     whileHover={{ scale: 1.02, borderColor: "#22c55e" }}
   >
     {/* Image Preview */}
-    <div style={{ height: "160px", width: "100%", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
-      <img
-        src={comp.img}
-        alt={comp.title}
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-        onError={(e) => { e.target.src = "https://placehold.co/600x400/222/FFF?text=Certificate"; }}
-      />
-    </div>
+    <LazyImage
+      src={comp.img}
+      alt={comp.title}
+      style={{ height: "160px", width: "100%", borderRadius: "8px" }}
+      placeholderText="Cert"
+    />
 
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
@@ -428,21 +467,25 @@ const CERTIFICATES = {
 export default function Certificates() {
 
   const [tab, setTab] = useState("technical"); // technical | nptel
-
+  const [isChangingTab, setIsChangingTab] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null); // For Modal
-
   const [currentImgIndex, setCurrentImgIndex] = useState(0); // For Multi-image slider
-
   const [showMarklistPdf, setShowMarklistPdf] = useState(false); // For PDF visibility
 
-
+  const handleTabChange = (newTab) => {
+    if (newTab === tab) return;
+    setIsChangingTab(true);
+    // Use a small timeout to let the UI update the button state first
+    setTimeout(() => {
+      setTab(newTab);
+      // Give time for the heavy DOM elements to build
+      setTimeout(() => setIsChangingTab(false), 200);
+    }, 50);
+  };
 
   const openModal = (cert) => {
-
     setSelectedCert(cert);
-
     setCurrentImgIndex(0);
-
   };
 
 
@@ -648,152 +691,101 @@ export default function Certificates() {
             {/* Tabs */}
 
             <div style={{ display: "flex", gap: 15, marginBottom: 25 }}>
-
               <button
-
-                onClick={() => setTab("technical")}
-
+                onClick={() => handleTabChange("technical")}
                 style={{
-
                   padding: "8px 20px",
-
                   borderRadius: 20,
-
                   border: "none",
-
                   background: tab === "technical" ? "#0ea5e9" : "#333",
-
                   color: "#fff",
-
                   cursor: "pointer",
-
-                  fontWeight: "bold"
-
+                  fontWeight: "bold",
+                  opacity: isChangingTab && tab !== "technical" ? 0.7 : 1,
+                  transition: "all 0.2s ease"
                 }}
-
               >
-
                 Technical
-
               </button>
-
               <button
-
-                onClick={() => setTab("nptel")}
-
+                onClick={() => handleTabChange("nptel")}
                 style={{
-
                   padding: "8px 20px",
-
                   borderRadius: 20,
-
                   border: "none",
-
                   background: tab === "nptel" ? "#0ea5e9" : "#333",
-
                   color: "#fff",
-
                   cursor: "pointer",
-
-                  fontWeight: "bold"
-
+                  fontWeight: "bold",
+                  opacity: isChangingTab && tab !== "nptel" ? 0.7 : 1,
+                  transition: "all 0.2s ease"
                 }}
-
               >
-
                 NPTEL (Online)
-
               </button>
-
+              {isChangingTab && (
+                <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#aaa", fontSize: "0.9rem" }}>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    style={{ width: 16, height: 16, border: "2px solid #333", borderTopColor: "#0ea5e9", borderRadius: "50%" }}
+                  />
+                  <span>Loading...</span>
+                </div>
+              )}
             </div>
 
 
 
-            {/* Technical Tab Content */}
+            <AnimatePresence mode="wait">
+              {!isChangingTab && (
+                <motion.div
+                  key={tab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Technical Tab Content */}
+                  {tab === "technical" && (
+                    <div className="certs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+                      {CERTIFICATES.technical.map((c, i) => (
+                        <TechnicalCertCard key={i} cert={c} openModal={openModal} />
+                      ))}
+                    </div>
+                  )}
 
-            {tab === "technical" && (
+                  {/* NPTEL Tab Content */}
+                  {tab === "nptel" && (
+                    <div style={{ display: "grid", gap: 30 }}>
+                      {/* Engineering Section */}
+                      <div>
+                        <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+                          Technical & Engineering
+                        </h4>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
+                          {CERTIFICATES.nptel_tech.map((c, i) => (
+                            <NPTELCourseCard key={i} cert={c} type="technical" openModal={openModal} />
+                          ))}
+                        </div>
+                      </div>
 
-              <div>
-
-                <div className="certs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-
-                  {CERTIFICATES.technical.map((c, i) => (
-
-                    <TechnicalCertCard key={i} cert={c} openModal={openModal} />
-
-                  ))}
-
-                </div>
-
-              </div>
-
-            )}
-
-
-
-            {/* NPTEL Tab Content */}
-
-            {tab === "nptel" && (
-
-              <div style={{ display: "grid", gap: 30 }}>
-
-
-
-                {/* Engineering Section */}
-
-                <div>
-
-                  <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
-
-                    Technical & Engineering
-
-                  </h4>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
-
-                    {CERTIFICATES.nptel_tech.map((c, i) => (
-
-                      <NPTELCourseCard key={i} cert={c} type="technical" openModal={openModal} />
-
-                    ))}
-
-                  </div>
-
-                </div>
-
-
-
-                {/* Soft Skills Section */}
-
-                <div>
-
-                  <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
-
-                    Soft Skills
-
-                  </h4>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
-
-                    {CERTIFICATES.nptel_soft.map((c, i) => (
-
-                      <NPTELCourseCard key={i} cert={c} type="soft" openModal={openModal} />
-
-                    ))}
-
-                  </div>
-
-                </div>
-
-
-
-
-
-
-
-              </div>
-
-            )}
+                      {/* Soft Skills Section */}
+                      <div>
+                        <h4 style={{ color: "#ccc", borderBottom: "1px solid #333", paddingBottom: 10, marginBottom: 15 }}>
+                          Soft Skills
+                        </h4>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15 }}>
+                          {CERTIFICATES.nptel_soft.map((c, i) => (
+                            <NPTELCourseCard key={i} cert={c} type="soft" openModal={openModal} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
 
 

@@ -770,3 +770,13 @@ form h3 {
   background-clip: text;
   color: transparent;
 }
+
+/* Shimmer Animation for Lazy Loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
