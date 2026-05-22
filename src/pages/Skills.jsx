@@ -138,7 +138,6 @@ export default function Skills() {
           transition={{ duration: 1, ease: "easeOut" }}
           style={{
             width: "100%",
-            height: "600px",
             borderRadius: "24px",
             background: "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
             border: "1px solid var(--glass-border)",
@@ -163,8 +162,6 @@ export default function Skills() {
                 border: "1px solid var(--primary)"
               }}
               style={{
-                width: "90px",
-                height: "90px",
                 borderRadius: "50%",
                 position: "absolute",
                 display: "flex",

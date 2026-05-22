@@ -5,9 +5,9 @@ import GlassCard from '../components/ui/GlassCard'
 
 const REAL_WORLD_PROJECTS = [
   {
-    title: 'Safely Hands',
-    desc: 'A technology-enabled platform connecting users with trusted, background-verified domestic help and care professionals. Features include rigorous staff verification and transparent pricing.',
-    tech: ['React', 'Node.js', 'Web Platform', 'Service Aggregator'],
+    title: 'Safely Hands [Live]',
+    desc: 'A domestic care service aggregator platform engineered with dynamic service catalogs and lead-capture pipelines; deployed on AWS EC2 with Nginx, Certbot SSL, and high security.',
+    tech: ['MERN Stack', 'AWS EC2', 'Nginx', 'Certbot SSL'],
     live: 'https://safelyhands.com/',
     code: '#'
   },
@@ -86,8 +86,8 @@ const FULL_STACK_PROJECTS = [
   },
   {
     title: 'CODE++',
-    desc: 'DSA programming platform with Judge0 API, real-time social mechanics, and global leaderboards.',
-    tech: ['MERN', 'Tailwind', 'ShadcnUI', 'Judge0 API'],
+    desc: 'Competitive DSA programming platform featuring a secure multilingual execution engine (Judge0 API), real-time 1v1 social match-ups via WebSockets, and performance tracking analytics dashboards for 500+ LeetCode problems.',
+    tech: ['React', 'Node.js', 'MongoDB', 'Judge0 API', 'Socket.io'],
     live: 'https://code-plus-plus.armaansiddiqui.online/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
@@ -180,15 +180,15 @@ const FULL_STACK_PROJECTS = [
 const ML_DS_PROJECTS = [
   {
     title: 'RADMIC',
-    desc: 'Radar-based Drone-Bird Classification using Micro-Doppler Signatures and CNN.',
-    tech: ['CNN', 'Keras', 'HDF5', 'Deep Learning'],
+    desc: 'Dual-stream CNN for radar-based micro-Doppler spectrogram classification (drones vs birds) achieving 94%+ validation accuracy with real-time synthetic data generators.',
+    tech: ['CNN', 'TensorFlow', 'Keras', 'Deep Learning', 'Data Augmentation'],
     live: '',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
-    title: 'CropRecommender',
-    desc: 'Ensemble-based model to suggest best-fit crops using soil/climatic data.',
-    tech: ['XGBoost', 'RF', 'SVM', 'Joblib'],
+    title: 'Crop Wizard',
+    desc: 'MERN application integrated with a Python Flask microservice deploying an Ensemble Classifier (Random Forest, XGBoost) to suggest optimal crops with 96% accuracy.',
+    tech: ['MERN Stack', 'Flask', 'XGBoost', 'Random Forest', 'Ensemble Learning'],
     live: '',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
@@ -215,6 +215,65 @@ const ML_DS_PROJECTS = [
   }
 ]
 
+const LazyIframe = ({ src, title, style }) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const iframeRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (iframeRef.current) {
+      observer.observe(iframeRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={iframeRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        background: 'rgba(0, 0, 0, 0.3)',
+        position: 'relative'
+      }}
+    >
+      {isLoaded ? (
+        <iframe
+          src={src}
+          title={title}
+          style={style}
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        />
+      ) : (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'var(--primary)',
+            fontSize: '0.9rem',
+            fontStyle: 'italic'
+          }}
+        >
+          Loading live preview...
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ProjectCard = ({ p }) => {
   return (
     <GlassCard
@@ -238,12 +297,10 @@ const ProjectCard = ({ p }) => {
         border: '1px solid rgba(255,255,255,0.05)'
       }}>
         {p.live ? (
-          <iframe
+          <LazyIframe
             src={p.live}
             title={p.title}
             style={{ width: '100%', height: '100%', border: 'none', filter: 'grayscale(0.2) contrast(1.1)' }}
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           />
         ) : (
           <div style={{

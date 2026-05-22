@@ -5,15 +5,13 @@ import GlassCard from "../components/ui/GlassCard";
 
 const EXPERIENCES = [
   {
-    role: "Software Engineer Intern ",
-    company: "Gozoom Technologies",
-    date: "July 2025 - Present",
-    location: "New Delhi",
+    role: "Software Development Engineer Intern",
+    company: "GoZoom Technologies",
+    date: "2025 – 2026",
+    location: "Remote",
     desc: [
-      "Commenced Internship on July 1, 2025. ",
-      "Focused on learning and development, task execution, and problem-solving.",
-      "Fostering innovation and creativity within the development team.",
-      "Full-stack development, UI components, and API integrations."
+      "Migrated client-side logic to the backend and optimised MongoDB aggregation with pagination, achieving a 30–40% improvement in system performance.",
+      "Delivered 5+ end-to-end full-stack web and mobile applications for international clients, independently managing requirements gathering, development with React.js and Node.js, and AWS deployment."
     ],
     type: "internship"
   },

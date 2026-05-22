@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FileText, User, MapPin, Mail, Phone, GraduationCap, Briefcase, Rocket, Settings, Code, Linkedin, Download } from "lucide-react";
+import { FileText, User, MapPin, Mail, Phone, GraduationCap, Briefcase, Rocket, Settings, Code, Linkedin, Download, Trophy } from "lucide-react";
 
 export default function Resume() {
-  const [activeResume, setActiveResume] = useState("fullstack");
+  // const [activeResume, setActiveResume] = useState("fullstack");
 
-  const resumes = {
-    fullstack: {
-      title: "Full Stack Resume",
-      file: "/resume_fullstack.pdf", // Placeholder: User needs to upload resume_fullstack.pdf
-    },
-    ml: {
-      title: "ML/DS Resume",
-      file: "/resume_ml_ds.pdf", // Placeholder: User needs to upload resume_ml.pdf
-    },
-    combined: {
-      title: "Combined Resume",
-      file: "/resume_combined.pdf", // Using existing resume.pdf
-    },
-  };
+  // const resumes = {
+  //   fullstack: {
+  //     title: "Full Stack Resume",
+  //     file: "/resume_fullstack.pdf", // Placeholder: User needs to upload resume_fullstack.pdf
+  //   },
+  //   ml: {
+  //     title: "ML/DS Resume",
+  //     file: "/resume_ml_ds.pdf", // Placeholder: User needs to upload resume_ml.pdf
+  //   },
+  //   combined: {
+  //     title: "Combined Resume",
+  //     file: "/resume_combined.pdf", // Using existing resume.pdf
+  //   },
+  // };
+
+  // Use ARMAAN.pdf only for now
+  const resumeFile = "/ARMAAN.pdf";
+  const resumeTitle = "Armaan Siddiqui Resume";
 
   return (
     <section className="container" style={{ padding: "60px 0" }}>
@@ -80,7 +84,7 @@ export default function Resume() {
                 </h3>
             </div>
             <p style={{ marginTop: 10, fontSize: 15, color: "#ccc" }}>
-              B.Tech CSE Student | Full Stack Developer | ML Enthusiast
+              Full-Stack Software Engineer & Machine Learning Practitioner
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, margin: "4px 0", fontSize: 14, color: "#aaa" }}>
                <MapPin size={14} /> Moradabad, Uttar Pradesh, India
@@ -105,9 +109,7 @@ export default function Resume() {
           >
             <strong style={{ color: "#00b4ff" }}>Professional Summary:</strong>
             <p style={{ marginTop: 6, color: "#ccc" }}>
-              Aspiring full-stack developer with a focus on creating responsive and scalable mobile and web apps. 
-              Enthusiastic about utilising frameworks, databases, and cloud platforms to implement cutting-edge solutions 
-              and create flawless UI/UX. Also passionate about Machine Learning and Data Science.
+              Full-Stack Software Engineer and Machine Learning Practitioner — GATE 2025 AIR 4358 (Data Science & AI). Built production systems serving real clients on AWS; engineered ML models at 94–96% accuracy. Graduating B.Tech (Computer Science) from AKTU in 2026.
             </p>
           </motion.div>
         </motion.div>
@@ -133,8 +135,8 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>B.Tech in Computer Science</strong> — MIT Moradabad (AKTU), 2022–2026 <br />
-              <span style={{ color: "#aaa" }}>Percentage (till 6th sem): 74.06%</span>
+              <strong>B.Tech in Computer Science</strong> — Dr. A.P.J. Abdul Kalam Technical University (AKTU), 2022–2026 <br />
+              <span style={{ color: "#aaa" }}>Aggregate: 74.53% (through 7th semester)</span>
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>12th Board — P.M.S. Public School</strong> (CBSE, 2022) <br />
@@ -169,10 +171,13 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>Software Engineer Intern </strong> — Gozoom Technologies (July 2025 - Present) <br />
-              <span style={{ color: "#aaa" }}>Full-stack development, UI components, API integrations.</span>
+              <strong>Software Development Engineer Intern</strong> — GoZoom Technologies (2025 – 2026) <br />
+              <span style={{ color: "#aaa" }}>
+                • Migrated client-side logic to the backend and optimised MongoDB aggregation with pagination, achieving a 30–40% improvement in system performance.<br />
+                • Delivered 5+ end-to-end full-stack web and mobile applications for international clients, independently managing requirements gathering, development with React.js and Node.js, and AWS deployment.
+              </span>
             </li>
-            <li style={{ marginTop: 8 }}>
+            <li style={{ marginTop: 12 }}>
               <strong>Summer Internship Trainee</strong> — Softpro India Computer Technologies (July 2025 - Aug 2025) <br />
               <span style={{ color: "#aaa" }}>Python with Data Science. Achieved "A+" Grade.</span>
             </li>
@@ -195,10 +200,60 @@ export default function Resume() {
              <h4 style={{ fontSize: 20, color: "#00b4ff", margin: 0 }}>Key Projects</h4>
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
-            <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}> <span style={{ color: '#00b4ff' }}>1.</span> <strong>RADMIC</strong>: Radar-based Drone-Bird Classification using Micro-Doppler.</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}> <span style={{ color: '#00b4ff' }}>2.</span> <strong>CODE++</strong>: DSA platform with Judge0 API & social mechanics.</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}> <span style={{ color: '#00b4ff' }}>3.</span> <strong>HeartDiseasePredictor</strong>: CV Risk Classifier (86% acc) using ANN.</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}> <span style={{ color: '#00b4ff' }}>4.</span> <strong>GraphXpert</strong>: ML app for trend prediction and visualization.</li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+              <span style={{ color: '#00b4ff' }}>1.</span>
+              <span><strong>CODE++</strong>: Competitive DSA platform with multilingual execution engine, 1v1 competition, and real-time leaderboards via WebSockets. Optimised analytics dashboards tracking performance metrics across 500+ LeetCode-style problems.</span>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+              <span style={{ color: '#00b4ff' }}>2.</span>
+              <span><strong>Safely Hands [Live]</strong>: Domestic care service aggregator platform engineered with dynamic service catalogs and lead-capture pipelines; deployed on AWS EC2 with SSL encryption.</span>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+              <span style={{ color: '#00b4ff' }}>3.</span>
+              <span><strong>Crop Wizard</strong>: MERN application integrated with Python Flask crop prediction ML microservice (96% accuracy) using an Ensemble classifier (Random Forest, XGBoost).</span>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+              <span style={{ color: '#00b4ff' }}>4.</span>
+              <span><strong>RADMIC</strong>: Dual-stream CNN classifying drones vs birds from micro-Doppler spectrograms (94%+ accuracy) using custom real-time data generators.</span>
+            </li>
+          </ul>
+        </motion.div>
+
+        {/* Achievements Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+          style={{
+            marginTop: 40,
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 12,
+            padding: "20px 24px",
+            background: "rgba(255,255,255,0.03)",
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+             <Trophy size={20} className="text-cyan-400" />
+             <h4 style={{ fontSize: 20, color: "#00b4ff", margin: 0 }}>
+                Key Achievements
+             </h4>
+          </div>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
+            <li>
+              <strong>GATE 2025</strong> — AIR 4358 in Data Science & AI (Data Science & AI)
+            </li>
+            <li style={{ marginTop: 8 }}>
+              <strong>TCS NQT IT 2026</strong> — 85.62% Overall (94% Coding Score)
+            </li>
+            <li style={{ marginTop: 8 }}>
+              <strong>Turbo AI Challenge AKTU (2024)</strong> — Zonal Winner & State-level Finalist
+            </li>
+            <li style={{ marginTop: 8 }}>
+              <strong>LeetCode</strong> — 500+ Competitive DSA Challenges Solved
+            </li>
+            <li style={{ marginTop: 8 }}>
+              <strong>MIT Tech Club</strong> — Student Coordinator & Mentor
+            </li>
           </ul>
         </motion.div>
 
@@ -304,7 +359,7 @@ export default function Resume() {
             </h4>
           </div>
 
-          {/* Resume Tabs */}
+          {/* Resume Tabs - Commented out for single resume view
           <div style={{ display: "flex", justifyContent: "center", gap: 15, marginBottom: 20, flexWrap: "wrap" }}>
             {Object.keys(resumes).map((key) => (
               <button
@@ -326,22 +381,23 @@ export default function Resume() {
               </button>
             ))}
           </div>
+          */}
 
           <div
+            className="resume-pdf-wrapper"
             style={{
               borderRadius: 12,
               overflow: "hidden",
               border: "1px solid rgba(255,255,255,0.1)",
               background: "#111",
-              height: "650px"
             }}
           >
             <iframe
-              src={resumes[activeResume].file}
-              title={resumes[activeResume].title}
+              src={resumeFile}
+              title={resumeTitle}
+              className="resume-iframe"
               style={{
                 width: "100%",
-                height: "100%",
                 border: "none",
               }}
             />
@@ -350,7 +406,7 @@ export default function Resume() {
           {/* Download Button */}
           <div style={{ textAlign: "center", marginTop: 20 }}>
             <motion.a
-              href={resumes[activeResume].file}
+              href={resumeFile}
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -367,7 +423,7 @@ export default function Resume() {
                 letterSpacing: 0.3,
               }}
             >
-              <Download size={18} /> Download {resumes[activeResume].title}
+              <Download size={18} /> Download {resumeTitle}
             </motion.a>
           </div>
         </motion.div>

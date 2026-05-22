@@ -56,9 +56,9 @@ const AboutMe = () => {
           }}
         >
           Hi, I’m <strong>Armaan Siddiqui</strong> — a{" "}
-          <strong>Software Engineer Intern</strong> at Gozoom Technologies and a{" "}
+          <strong>Software Development Engineer Intern</strong> at GoZoom Technologies and a{" "}
           <strong>Full-Stack Developer</strong> in training. I am also a keen{" "}
-          <strong>Machine Learning enthusiast</strong>, constantly exploring the intersection of data and development.
+          <strong>Machine Learning practitioner</strong>, constantly exploring the intersection of data and development.
         </p>
 
         <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.8)" }}>
@@ -137,7 +137,7 @@ const AboutMe = () => {
                   <strong>MIT Moradabad (AKTU)</strong> — Moradabad, Uttar Pradesh
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  2022 – 2026 | Percentage (till 6th sem): 74.06%
+                  2022 – 2026 | Aggregate: 74.53% (through 7th semester)
                 </p>
               </div>
             </motion.div>
