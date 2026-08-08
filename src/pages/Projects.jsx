@@ -78,6 +78,13 @@ const REAL_WORLD_PROJECTS = [
 
 const FULL_STACK_PROJECTS = [
   {
+    title: 'IntelliMatch ATS',
+    desc: 'AI-powered resume screening dashboard featuring an algorithmic PDF parser and FAISS RAG search engine for semantic candidate queries, cutting screening and interview-prep time by 80%. Automated interview question generator (LangChain + Gemini/GPT-4o) with one-click PDF export.',
+    tech: ['Python', 'Flask', 'React.js', 'LangChain', 'FAISS RAG', 'Gemini API', 'GPT-4o'],
+    live: '',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
     title: 'Freelance Portfolio',
     desc: 'My personal freelance portfolio showcasing various client projects and commercial work.',
     tech: ['React', 'Tailwind', 'Framer Motion'],

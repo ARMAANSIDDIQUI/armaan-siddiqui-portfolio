@@ -9,11 +9,11 @@ import '../index.css'
 
 export default function Home() {
   const professions = [
+    'Software Engineer',
     'Full Stack Developer',
-    'Machine Learning Enthusiast',
-    "Data Science Aspirant",
-    'B.Tech CSE Student',
-    'React Developer',
+    'Generative AI & RAG Engineer',
+    'Machine Learning Practitioner',
+    'B.Tech CS Graduate',
   ]
 
   const quickLinks = [

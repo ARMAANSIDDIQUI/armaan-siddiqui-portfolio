@@ -382,16 +382,18 @@ const LEADERSHIP = [
 
 const INTERNSHIPS = [
   {
+    role: "SDE Intern | GoZoom Technologies",
+    title: "GoZoom Technologies Experience Letter",
+    desc: "Software Development Engineer Internship (July 1, 2025 – June 30, 2026). Delivered 5+ international full-stack & mobile apps, optimized MongoDB pipelines by 30–40%. Click to view Experience Letter.",
+    icon: <Briefcase size={28} className="text-purple-400" />,
+    pdf: "/GoZoom_Experience_Letter.pdf"
+  },
+  {
     role: "Summer Internship Trainee | Softpro India",
+    title: "Softpro India Internship Certificate",
     desc: "Domain: Python with Data Science. Achieved A+ Grade. 45 Days (July-Aug 2025).",
     icon: <Award size={28} className="text-cyan-400" />,
     img: "/certs/softpro.jpg"
-  },
-  {
-    role: "SDE Intern | Gozoom",
-    desc: "Software Development Engineer Internship at Gozoom (Certificate awaited).",
-    icon: <Briefcase size={28} className="text-purple-400" />,
-    img: "https://placehold.co/600x400/222/FFF?text=Gozoom+Internship" // Placeholder
   }
 ];
 

@@ -109,7 +109,7 @@ export default function Resume() {
           >
             <strong style={{ color: "#00b4ff" }}>Professional Summary:</strong>
             <p style={{ marginTop: 6, color: "#ccc" }}>
-              Full-Stack Software Engineer and Machine Learning Practitioner — GATE 2025 AIR 4358 (Data Science & AI). Built production systems serving real clients on AWS; engineered ML models at 94–96% accuracy. Graduating B.Tech (Computer Science) from AKTU in 2026.
+              Software Engineer (B.Tech CS, GATE 2025 AIR 4358 — Data Science & AI) with experience building RAG pipelines using LangChain and FAISS, ensemble ML models at 96% accuracy, and full-stack systems deployed on AWS. Comfortable with LLM orchestration, vector search, and Transformer-based NLP.
             </p>
           </motion.div>
         </motion.div>
@@ -135,8 +135,8 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>B.Tech in Computer Science</strong> — Dr. A.P.J. Abdul Kalam Technical University (AKTU), 2022–2026 <br />
-              <span style={{ color: "#aaa" }}>Aggregate: 74.53% (through 7th semester)</span>
+              <strong>B.Tech in Computer Science</strong> — Dr. A.P.J. Abdul Kalam Technical University (AKTU), 2022–2026 (Graduated) <br />
+              <span style={{ color: "#aaa" }}>Aggregate: 76.16%</span>
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>12th Board — P.M.S. Public School</strong> (CBSE, 2022) <br />
@@ -171,10 +171,10 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>Software Development Engineer Intern</strong> — GoZoom Technologies (2025 – 2026) <br />
+              <strong>Software Development Engineer Intern</strong> — GoZoom Technologies (July 2025 – June 2026) <br />
               <span style={{ color: "#aaa" }}>
                 • Migrated client-side logic to the backend and optimised MongoDB aggregation with pagination, achieving a 30–40% improvement in system performance.<br />
-                • Delivered 5+ end-to-end full-stack web and mobile applications for international clients, independently managing requirements gathering, development with React.js and Node.js, and AWS deployment.
+                • Delivered 5+ end-to-end full-stack web and mobile applications for international clients, independently managing requirements gathering, development using React.js and Node.js, and AWS deployment.
               </span>
             </li>
             <li style={{ marginTop: 12 }}>
@@ -183,7 +183,7 @@ export default function Resume() {
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>Freelance Web Developer</strong> — Self-employed (2025 - Present) <br />
-              <span style={{ color: "#aaa" }}>Building custom websites and delivering impactful tech solutions.</span>
+              <span style={{ color: "#aaa" }}>Building custom websites and delivering impactful tech solutions for diverse clients.</span>
             </li>
           </ul>
         </motion.div>
@@ -202,11 +202,11 @@ export default function Resume() {
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
               <span style={{ color: '#00b4ff' }}>1.</span>
-              <span><strong>CODE++</strong>: Competitive DSA platform with multilingual execution engine, 1v1 competition, and real-time leaderboards via WebSockets. Optimised analytics dashboards tracking performance metrics across 500+ LeetCode-style problems.</span>
+              <span><strong>IntelliMatch ATS</strong>: AI-powered resume screening dashboard featuring an algorithmic PDF parser and FAISS RAG search engine for semantic candidate queries, cutting screening time by 80%. Built automated interview question generator (LangChain + Gemini/GPT-4o) with PDF export.</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
               <span style={{ color: '#00b4ff' }}>2.</span>
-              <span><strong>Safely Hands [Live]</strong>: Domestic care service aggregator platform engineered with dynamic service catalogs and lead-capture pipelines; deployed on AWS EC2 with SSL encryption.</span>
+              <span><strong>CODE++</strong>: Competitive DSA platform with multilingual execution engine (Judge0 API), 1v1 competition mode, and real-time leaderboards via WebSockets across 500+ LeetCode-style problems.</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
               <span style={{ color: '#00b4ff' }}>3.</span>
@@ -214,7 +214,7 @@ export default function Resume() {
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
               <span style={{ color: '#00b4ff' }}>4.</span>
-              <span><strong>RADMIC</strong>: Dual-stream CNN classifying drones vs birds from micro-Doppler spectrograms (94%+ accuracy) using custom real-time data generators.</span>
+              <span><strong>RADMIC</strong>: Dual-stream CNN classifying drones vs birds from micro-Doppler spectrograms (94%+ accuracy) using custom real-time data generators in HDF5 format.</span>
             </li>
           </ul>
         </motion.div>
@@ -240,7 +240,7 @@ export default function Resume() {
           </div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>GATE 2025</strong> — AIR 4358 in Data Science & AI (Data Science & AI)
+              <strong>GATE 2025</strong> — AIR 4358 in Data Science & AI
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>TCS NQT IT 2026</strong> — 85.62% Overall (94% Coding Score)
@@ -250,6 +250,9 @@ export default function Resume() {
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>LeetCode</strong> — 500+ Competitive DSA Challenges Solved
+            </li>
+            <li style={{ marginTop: 8 }}>
+              <strong>Softpro Internship (2025)</strong> — A+ Grade (Python with Data Science)
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>MIT Tech Club</strong> — Student Coordinator & Mentor
@@ -266,25 +269,35 @@ export default function Resume() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
              <Settings size={20} className="text-cyan-400" />
-             <h4 style={{ fontSize: 20, color: "#00b4ff", margin: 0 }}>Skills</h4>
+             <h4 style={{ fontSize: 20, color: "#00b4ff", margin: 0 }}>Technical Skills</h4>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {[
               "Python",
+              "JavaScript (ES6+)",
               "C",
               "C++",
+              "SQL",
+              "Generative AI",
+              "LangChain",
+              "FAISS",
+              "LlamaIndex",
+              "Gemini API",
+              "GPT-4o",
+              "RAG Pipelines",
               "React.js",
               "Node.js",
-              "Express",
+              "Express.js",
+              "Flask",
               "MongoDB",
-              "SQL",
+              "AWS (EC2, Lambda, S3)",
               "Tailwind CSS",
-              "AWS",
-              "Git",
               "Scikit-learn",
-              "Pandas",
-              "NumPy",
-              "Deep Learning"
+              "TensorFlow",
+              "Keras",
+              "Docker",
+              "Git",
+              "Postman"
             ].map((skill) => (
               <motion.span
                 key={skill}

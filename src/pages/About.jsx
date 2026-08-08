@@ -56,20 +56,17 @@ const AboutMe = () => {
           }}
         >
           Hi, I’m <strong>Armaan Siddiqui</strong> — a{" "}
-          <strong>Software Development Engineer Intern</strong> at GoZoom Technologies and a{" "}
-          <strong>Full-Stack Developer</strong> in training. I am also a keen{" "}
-          <strong>Machine Learning practitioner</strong>, constantly exploring the intersection of data and development.
+          <strong>Software Development Engineer</strong>, <strong>Full-Stack Developer</strong>, and{" "}
+          <strong>Machine Learning practitioner</strong> specializing in Generative AI, RAG pipelines, and cloud-deployed systems.
         </p>
 
         <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.8)" }}>
-          I’m currently pursuing B.Tech in Computer Science at MIT, Moradabad, affiliated with AKTU, Lucknow.
-          With a passion for learning and building, I’ve been continuously developing my skills in both software development
-          and data-driven technologies.
+          I hold a B.Tech in Computer Science from MIT, Moradabad (affiliated with AKTU, Lucknow).
+          With a strong foundation in DSA, full-stack web engineering, and AI/ML, I build scalable production systems and AI tools.
         </p>
 
         <p>
-            Currently exploring real-world development through freelance projects, hackathons, and team collaborations.
-            Always open to learning, contributing, and building impactful tech solutions.
+            Actively building real-world software solutions, engineering AI agents, and delivering impactful tech solutions for client and open-source projects.
         </p>
 
         {/* --- Education Section --- */}
@@ -137,7 +134,7 @@ const AboutMe = () => {
                   <strong>MIT Moradabad (AKTU)</strong> — Moradabad, Uttar Pradesh
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  2022 – 2026 | Aggregate: 74.53% (through 7th semester)
+                  2022 – 2026 | Aggregate: 76.16% (Graduated)
                 </p>
               </div>
             </motion.div>

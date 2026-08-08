@@ -30,10 +30,10 @@ const SKILLS = [
 
 const ROWS = [
   [
-    { title: "Languages", icon: <Code size={20} />, items: ["Python", "C", "C++", "JavaScript (ES6+)", "TypeScript"] },
+    { title: "Languages", icon: <Code size={20} />, items: ["Python", "JavaScript (ES6+)", "C", "C++", "SQL", "TypeScript"] },
+    { title: "Generative AI & LLMs", icon: <Terminal size={20} />, items: ["RAG Pipelines", "LangChain", "FAISS / ChromaDB", "LlamaIndex", "Google Gemini API", "OpenAI GPT-4o", "Prompt Engineering"] },
     { title: "Frontend", icon: <Layout size={20} />, items: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Redux"] },
-    { title: "Backend", icon: <Server size={20} />, items: ["Node.js", "Express", "REST APIs", "FastAPI"] },
-    { title: "Databases", icon: <Database size={20} />, items: ["MongoDB", "MySQL", "Firebase", "SQL Server"] },
+    { title: "Backend", icon: <Server size={20} />, items: ["Node.js", "Express.js", "Flask", "REST APIs"] },
   ],
   [
     {
@@ -41,24 +41,23 @@ const ROWS = [
       icon: <Cpu size={20} />,
       items: [
         "Scikit-learn",
+        "TensorFlow / Keras",
         "Pandas",
         "NumPy",
-        "Matplotlib",
-        "Seaborn",
-        "Deep Learning",
-        "Neural Networks",
-        "EDA",
+        "Matplotlib & Seaborn",
+        "Deep Learning (CNN/ANN)",
+        "Ensemble Learning",
       ],
     },
     {
-      title: "Cloud & Tools",
-      icon: <Cloud size={20} />,
-      items: ["AWS (EC2, Lambda)", "Google Cloud", "Git/GitHub", "Postman", "Vercel", "VS Code", "Docker", "Linux"],
+      title: "Cloud & Databases",
+      icon: <Database size={20} />,
+      items: ["AWS (EC2, Lambda, S3, IAM)", "MongoDB", "MySQL", "Firebase", "MS SQL Server", "GCP"],
     },
     {
-      title: "Core Concepts",
-      icon: <Layers size={20} />,
-      items: ["Data Structures & Algorithms", "System Design", "Responsive Design", "Database Testing", "OOPs"],
+      title: "DevOps & Core Tools",
+      icon: <Cloud size={20} />,
+      items: ["Docker", "CI/CD Pipelines", "Git / GitHub", "Postman", "Vercel", "VS Code", "Jupyter Notebook"],
     },
   ],
 ];

@@ -7,7 +7,7 @@ const EXPERIENCES = [
   {
     role: "Software Development Engineer Intern",
     company: "GoZoom Technologies",
-    date: "2025 – 2026",
+    date: "July 2025 – June 2026",
     location: "Remote",
     desc: [
       "Migrated client-side logic to the backend and optimised MongoDB aggregation with pagination, achieving a 30–40% improvement in system performance.",
