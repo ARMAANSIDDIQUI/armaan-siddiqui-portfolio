@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Briefcase, Calendar, MapPin, Rocket } from "lucide-react";
 import GlassCard from "../components/ui/GlassCard";
 
@@ -42,6 +42,17 @@ const EXPERIENCES = [
 ];
 
 export default function Experience() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 75%", "end 25%"]
+  });
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <section className="container" style={{ padding: "60px 20px", maxWidth: "1000px", margin: "0 auto", minHeight: '100vh' }}>
       <GlassCard style={{ padding: "40px 20px" }}>
@@ -65,18 +76,34 @@ export default function Experience() {
         </motion.div>
 
         {/* Timeline Container */}
-        <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto", paddingLeft: "10px" }}>
+        <div ref={containerRef} style={{ position: "relative", maxWidth: "800px", margin: "0 auto", paddingLeft: "10px" }}>
 
-          {/* Vertical Line */}
+          {/* Vertical Line Background Track */}
           <div
             style={{
               position: "absolute",
-              left: "19px",
+              left: "12px",
               top: 0,
               bottom: 0,
-              width: "2px",
+              width: "3px",
+              background: "rgba(255, 255, 255, 0.08)",
+              borderRadius: "3px"
+            }}
+          />
+
+          {/* Animated Vertical Line Fill on Scroll */}
+          <motion.div
+            style={{
+              position: "absolute",
+              left: "12px",
+              top: 0,
+              bottom: 0,
+              width: "3px",
               background: "linear-gradient(to bottom, var(--primary), var(--secondary), #22c55e)",
-              opacity: 0.3
+              borderRadius: "3px",
+              scaleY: scaleY,
+              transformOrigin: "top",
+              boxShadow: "0 0 10px var(--primary)"
             }}
           />
 
@@ -90,25 +117,9 @@ export default function Experience() {
               style={{
                 position: "relative",
                 marginBottom: 50,
-                paddingLeft: "45px"
+                paddingLeft: "35px"
               }}
             >
-              {/* Timeline Dot */}
-              <div
-                style={{
-                  position: "absolute",
-                  left: "10px",
-                  top: "24px",
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "50%",
-                  background: exp.type === 'internship' ? 'var(--primary)' : exp.type === 'freelance' ? '#22c55e' : 'var(--secondary)',
-                  border: "4px solid #020617",
-                  boxShadow: `0 0 10px ${exp.type === 'internship' ? 'var(--primary)' : exp.type === 'freelance' ? '#22c55e' : 'var(--secondary)'}`,
-                  zIndex: 2
-                }}
-              />
-
               {/* Content Card */}
               <GlassCard
                 whileHover={{ scale: 1.02 }}
