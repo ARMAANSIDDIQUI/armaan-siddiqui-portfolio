@@ -62,9 +62,9 @@ const REAL_WORLD_PROJECTS = [
   },
   {
     title: 'Jyoti Foundation',
-    desc: 'Welfare foundation focused on high-quality eye treatment and community healthcare. Currently under development to better serve people in need.',
-    tech: ['Eye Care', 'Health Welfare', 'React'],
-    live: 'https://jyoti-foundation.org/',
+    desc: 'Charitable NGO dedicated to preventing blindness and restoring vision with free eye care and surgeries, helping organizations to assert their online presence.',
+    tech: ['React.js', 'NGO Platform', 'Healthcare UI', 'Web Development'],
+    live: 'http://jyoti-foundation.org/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
@@ -325,10 +325,10 @@ const ProjectCard = ({ p }) => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>{p.title}</h3>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.6, flexGrow: 1 }}>{p.desc}</p>
+        <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8, minHeight: '2.8rem', display: 'flex', alignItems: 'center' }}>{p.title}</h3>
+        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.6, flexGrow: 1, minHeight: '4.8rem' }}>{p.desc}</p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20, minHeight: '64px', alignContent: 'flex-start' }}>
           {p.tech.map((t) => (
             <span
               key={t}

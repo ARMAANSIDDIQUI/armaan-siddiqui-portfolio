@@ -33,8 +33,8 @@ const EXPERIENCES = [
     date: "2025 - Present",
     location: "Remote",
     desc: [
-      "Building custom websites and delivering impactful tech solutions for diverse clients.",
-      "Delivered projects like 'House of Specials', 'Rotary Club Sanskriti', and 'Jyotidham Toronto'.",
+      "Building custom websites and delivering impactful tech solutions, helping organizations to assert their online presence.",
+      "Delivered key client projects including 'Honest Graphics & Printers', 'Digital Honest', 'Jyoti Foundation', 'House of Specials', and 'Rotary Club Sanskriti'.",
       "Managing end-to-end development from requirements gathering to deployment."
     ],
     type: "freelance"
