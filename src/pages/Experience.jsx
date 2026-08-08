@@ -71,7 +71,7 @@ export default function Experience() {
           <div
             style={{
               position: "absolute",
-              left: "29px",
+              left: "19px",
               top: 0,
               bottom: 0,
               width: "2px",
@@ -90,15 +90,15 @@ export default function Experience() {
               style={{
                 position: "relative",
                 marginBottom: 50,
-                paddingLeft: "40px"
+                paddingLeft: "45px"
               }}
             >
               {/* Timeline Dot */}
               <div
                 style={{
                   position: "absolute",
-                  left: "0",
-                  top: "0",
+                  left: "10px",
+                  top: "24px",
                   width: "20px",
                   height: "20px",
                   borderRadius: "50%",

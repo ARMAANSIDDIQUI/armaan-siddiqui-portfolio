@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FileText, User, MapPin, Mail, Phone, GraduationCap, Briefcase, Rocket, Settings, Code, Linkedin, Download, Trophy } from "lucide-react";
+import "../CSS/Resume.css";
 
 export default function Resume() {
   // const [activeResume, setActiveResume] = useState("fullstack");
@@ -411,6 +412,8 @@ export default function Resume() {
               className="resume-iframe"
               style={{
                 width: "100%",
+                height: "1150px",
+                minHeight: "100vh",
                 border: "none",
               }}
             />
