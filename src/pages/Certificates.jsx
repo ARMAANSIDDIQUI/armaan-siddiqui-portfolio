@@ -386,6 +386,7 @@ const INTERNSHIPS = [
     title: "GoZoom Technologies Experience Letter",
     desc: "Software Development Engineer Internship (July 1, 2025 – June 30, 2026). Delivered 5+ international full-stack & mobile apps, optimized MongoDB pipelines by 30–40%. Click to view Experience Letter.",
     icon: <Briefcase size={28} className="text-purple-400" />,
+    img: "/Armaan Experience letter.png",
     pdf: "/GoZoom_Experience_Letter.pdf"
   },
   {

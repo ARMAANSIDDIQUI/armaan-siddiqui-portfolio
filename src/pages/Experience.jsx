@@ -45,7 +45,7 @@ export default function Experience() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 75%", "end 25%"]
+    offset: ["start 75%", "end 80%"]
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -116,7 +116,7 @@ export default function Experience() {
               transition={{ delay: i * 0.2, duration: 0.5 }}
               style={{
                 position: "relative",
-                marginBottom: 50,
+                marginBottom: i === EXPERIENCES.length - 1 ? 0 : 50,
                 paddingLeft: "35px"
               }}
             >
