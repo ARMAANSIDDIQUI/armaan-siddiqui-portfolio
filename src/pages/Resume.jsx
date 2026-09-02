@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FileText, User, MapPin, Mail, Phone, GraduationCap, Briefcase, Rocket, Settings, Code, Linkedin, Download, Trophy } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 import "../CSS/Resume.css";
 
 export default function Resume() {
@@ -93,6 +94,17 @@ export default function Resume() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 15, margin: "4px 0", fontSize: 14, color: "#aaa" }}>
                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Mail size={14} /> armaansiddiqui.pms@gmail.com</span>
                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Phone size={14} /> +91 7017086408</span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 15, margin: "6px 0 0 0", fontSize: 13 }}>
+               <a href="https://leetcode.com/u/armaansiddiqui/" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#FFA116', textDecoration: 'none', fontWeight: 500 }}>
+                 <SiLeetcode size={14} /> leetcode.com/u/armaansiddiqui
+               </a>
+               <a href="https://www.linkedin.com/in/armaan-siddiqui-6902ba294" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#38bdf8', textDecoration: 'none', fontWeight: 500 }}>
+                 <Linkedin size={14} /> in/armaan-siddiqui-6902ba294
+               </a>
+               <a href="https://github.com/ARMAANSIDDIQUI" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#cbd5e1', textDecoration: 'none', fontWeight: 500 }}>
+                 <Code size={14} /> github.com/ARMAANSIDDIQUI
+               </a>
             </div>
           </div>
 
@@ -250,7 +262,14 @@ export default function Resume() {
               <strong>Turbo AI Challenge AKTU (2024)</strong> — Zonal Winner & State-level Finalist
             </li>
             <li style={{ marginTop: 8 }}>
-              <strong>LeetCode</strong> — 500+ Competitive DSA Challenges Solved
+              <a
+                href="https://leetcode.com/u/armaansiddiqui/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "inherit", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6 }}
+              >
+                <strong style={{ color: "#FFA116" }}>LeetCode</strong> — 500+ Competitive DSA Challenges Solved <span style={{ fontSize: 12, color: "#FFA116" }}>↗</span>
+              </a>
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>Softpro Internship (2025)</strong> — A+ Grade (Python with Data Science)
@@ -330,7 +349,7 @@ export default function Resume() {
           }}
         >
           {[
-            { name: "LeetCode", link: "https://leetcode.com/u/armaansiddiqui/", icon: <Code size={18} /> },
+            { name: "LeetCode", link: "https://leetcode.com/u/armaansiddiqui/", icon: <SiLeetcode size={18} color="#FFA116" /> },
             { name: "GitHub", link: "https://github.com/ARMAANSIDDIQUI", icon: <Code size={18} /> },
             { name: "LinkedIn", link: "https://www.linkedin.com/in/armaan-siddiqui-6902ba294", icon: <Linkedin size={18} /> },
           ].map((site) => (

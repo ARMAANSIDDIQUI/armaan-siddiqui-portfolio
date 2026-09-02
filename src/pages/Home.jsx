@@ -19,6 +19,7 @@ export default function Home() {
   const quickLinks = [
     { img: "/github.png", title: "GitHub", link: "https://github.com/ARMAANSIDDIQUI" },
     { img: "/linkedin.png", title: "LinkedIn", link: "https://www.linkedin.com/in/armaan-siddiqui-6902ba294" },
+    { img: "/leetcode.svg", title: "LeetCode", link: "https://leetcode.com/u/armaansiddiqui/" },
     { img: "/gmail.png", title: "Email", link: "mailto:armaansiddiqui.pms@gmail.com" },
     { img: "/whatsapp.png", title: "WhatsApp", link: "https://wa.me/917017086408" },
   ];

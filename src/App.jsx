@@ -14,6 +14,8 @@ import SkillNetwork from './pages/Skills'
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 import ThemePreview from './pages/ThemePreview'
+import { Github, Linkedin } from 'lucide-react'
+import { SiLeetcode } from 'react-icons/si'
 
 // New ScrollToTop component
 function ScrollToTop() {
@@ -46,8 +48,38 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <footer className="footer" style={{ position: 'relative', zIndex: 1 }}>
-        © {new Date().getFullYear()} Armaan Siddiqui — Built with React
+      <footer className="footer" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: '18px', alignItems: 'center' }}>
+          <a
+            href="https://leetcode.com/u/armaansiddiqui/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: '#FFA116', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none', fontSize: '13px' }}
+          >
+            <SiLeetcode size={15} /> LeetCode
+          </a>
+          <span style={{ opacity: 0.3 }}>•</span>
+          <a
+            href="https://github.com/ARMAANSIDDIQUI"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: '#cbd5e1', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none', fontSize: '13px' }}
+          >
+            <Github size={15} /> GitHub
+          </a>
+          <span style={{ opacity: 0.3 }}>•</span>
+          <a
+            href="https://www.linkedin.com/in/armaan-siddiqui-6902ba294"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none', fontSize: '13px' }}
+          >
+            <Linkedin size={15} /> LinkedIn
+          </a>
+        </div>
+        <div>
+          © {new Date().getFullYear()} Armaan Siddiqui — Built with React
+        </div>
       </footer>
       <ScrollToTopButton />
     </div>

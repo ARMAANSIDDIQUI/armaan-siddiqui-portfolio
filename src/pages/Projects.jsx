@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, ExternalLink, Code, Rocket, Layers, Cpu, Globe } from 'lucide-react'
+import { Github, ExternalLink, Code, Rocket, Layers, Cpu, Globe, Linkedin } from 'lucide-react'
+import { SiLeetcode } from 'react-icons/si'
 import GlassCard from '../components/ui/GlassCard'
 
 const REAL_WORLD_PROJECTS = [
@@ -96,6 +97,13 @@ const FULL_STACK_PROJECTS = [
     desc: 'Competitive DSA programming platform featuring a secure multilingual execution engine (Judge0 API), real-time 1v1 social match-ups via WebSockets, and performance tracking analytics dashboards for 500+ LeetCode problems.',
     tech: ['React', 'Node.js', 'MongoDB', 'Judge0 API', 'Socket.io'],
     live: 'https://code-plus-plus.armaansiddiqui.online/',
+    code: 'https://github.com/ARMAANSIDDIQUI'
+  },
+  {
+    title: 'LeetCode (500+ Problems Solved)',
+    desc: 'Algorithmic problem solving and competitive programming across Dynamic Programming, Graph Algorithms, Binary Trees, and System Design. Consistent daily practice with optimal space/time complexity solutions.',
+    tech: ['LeetCode', 'DSA', 'Algorithms', 'C++', 'Python', 'Competitive Programming'],
+    live: 'https://leetcode.com/u/armaansiddiqui/',
     code: 'https://github.com/ARMAANSIDDIQUI'
   },
   {
@@ -304,11 +312,32 @@ const ProjectCard = ({ p }) => {
         border: '1px solid rgba(255,255,255,0.05)'
       }}>
         {p.live ? (
-          <LazyIframe
-            src={p.live}
-            title={p.title}
-            style={{ width: '100%', height: '100%', border: 'none', filter: 'grayscale(0.2) contrast(1.1)' }}
-          />
+          p.live.includes('leetcode.com') ? (
+            <div style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'radial-gradient(circle at center, rgba(255, 161, 22, 0.15), rgba(15, 23, 42, 0.9))',
+              gap: 12
+            }}>
+              <SiLeetcode size={54} color="#FFA116" />
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFA116', letterSpacing: '0.5px' }}>
+                @armaansiddiqui
+              </span>
+              <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+                500+ Solved • Competitive Programming
+              </span>
+            </div>
+          ) : (
+            <LazyIframe
+              src={p.live}
+              title={p.title}
+              style={{ width: '100%', height: '100%', border: 'none', filter: 'grayscale(0.2) contrast(1.1)' }}
+            />
+          )
         ) : (
           <div style={{
             width: '100%',
@@ -348,6 +377,30 @@ const ProjectCard = ({ p }) => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, marginTop: 'auto' }}>
+          {p.code && p.code !== '#' && (
+            <motion.a
+              href={p.code}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                color: 'var(--text-main)',
+                padding: '10px 16px',
+                borderRadius: '8px',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                textDecoration: 'none'
+              }}
+            >
+              <Github size={16} /> Code
+            </motion.a>
+          )}
           {p.live && (
             <motion.a
               href={p.live}
@@ -359,17 +412,21 @@ const ProjectCard = ({ p }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                background: 'linear-gradient(90deg, var(--primary), var(--secondary))',
+                background: p.live.includes('leetcode.com')
+                  ? 'linear-gradient(90deg, #f59e0b, #d97706)'
+                  : 'linear-gradient(90deg, var(--primary), var(--secondary))',
                 color: '#fff',
                 padding: '10px 18px',
                 borderRadius: '8px',
                 fontSize: '0.9rem',
                 fontWeight: 600,
                 textDecoration: 'none',
-                boxShadow: '0 4px 15px rgba(0,119,255,0.3)'
+                boxShadow: p.live.includes('leetcode.com')
+                  ? '0 4px 15px rgba(245, 158, 11, 0.35)'
+                  : '0 4px 15px rgba(0,119,255,0.3)'
               }}
             >
-              <ExternalLink size={16} /> Open Project
+              <ExternalLink size={16} /> {p.live.includes('leetcode.com') ? 'LeetCode Profile' : 'Open Project'}
             </motion.a>
           )}
         </div>
@@ -391,14 +448,98 @@ export default function Projects() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 20,
+          marginBottom: 40
+        }}
       >
-        <div style={{ padding: '12px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)' }}>
-          <Rocket size={32} color="var(--primary)" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div style={{ padding: '12px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)' }}>
+            <Rocket size={32} color="var(--primary)" />
+          </div>
+          <div>
+            <h1 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800, margin: 0 }}>
+              All Projects
+            </h1>
+            <p style={{ color: 'var(--text-muted)', margin: '4px 0 0 0', fontSize: '0.95rem' }}>
+              Explore real-world client deliverables, full-stack systems & competitive programming.
+            </p>
+          </div>
         </div>
-        <h1 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800, margin: 0 }}>
-          All Projects
-        </h1>
+
+        {/* Profile Badges */}
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <motion.a
+            href="https://leetcode.com/u/armaansiddiqui/"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '8px 16px',
+              borderRadius: '10px',
+              background: 'rgba(255, 161, 22, 0.12)',
+              border: '1px solid rgba(255, 161, 22, 0.35)',
+              color: '#FFA116',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              boxShadow: '0 2px 10px rgba(255, 161, 22, 0.15)'
+            }}
+          >
+            <SiLeetcode size={18} /> LeetCode
+          </motion.a>
+
+          <motion.a
+            href="https://github.com/ARMAANSIDDIQUI"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '8px 16px',
+              borderRadius: '10px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              color: '#f1f5f9',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              fontWeight: 600
+            }}
+          >
+            <Github size={18} /> GitHub
+          </motion.a>
+
+          <motion.a
+            href="https://www.linkedin.com/in/armaan-siddiqui-6902ba294"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '8px 16px',
+              borderRadius: '10px',
+              background: 'rgba(10, 102, 194, 0.15)',
+              border: '1px solid rgba(10, 102, 194, 0.35)',
+              color: '#38bdf8',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              fontWeight: 600
+            }}
+          >
+            <Linkedin size={18} /> LinkedIn
+          </motion.a>
+        </div>
       </motion.div>
 
       {/* Real World / Live Projects Section */}
